@@ -21,7 +21,7 @@ class CreatePeopleTable extends Migration {
             $table->string('name');
             $table->string('lastName');
             $table->string('email');
-
+            $table->timestamps();   
 		});
 	}
 
@@ -32,7 +32,7 @@ class CreatePeopleTable extends Migration {
 	 */
 	public function down()
 	{
-
+        Schema::drop('people');
 	}
 
 }

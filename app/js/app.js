@@ -1,6 +1,6 @@
 var app = angular.module('weatherObservatory', ['ngRoute'])
 
-.constant('API_URL', 'http://localhost:8000/WeatherObservatory/WeatherObservatory/public/index.php/')
+.constant('API_URL', 'http://localhost:8000/WeatherObservatory/WeatherObservatory/public/index.php/api/v1/')
 
 .config(function ($routeProvider) {
     $routeProvider

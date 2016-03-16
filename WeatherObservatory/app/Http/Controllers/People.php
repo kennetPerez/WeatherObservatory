@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class People extends Controller {
 
+
+    public function login(Request $request) {
+        return $person = Person::where('user', $request->input('user'))->where('pass', md5($request->input('pass')))->select('id','user','email','name','lastName')->get();
+    }
+
+
 	/**
 	 * Display a listing of the resource.
 	 *

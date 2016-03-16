@@ -14,3 +14,5 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/api/v1/people', 'People@index');
 Route::get('/api/v1/services', 'Services@index');
+
+Route::post('/api/v1/people/login', 'People@login');

@@ -16,11 +16,10 @@ class CreatePeopleTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('type');
-            $table->string('user');
             $table->string('pass');
             $table->string('name');
             $table->string('lastName');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();   
 		});
 	}

@@ -1,6 +1,6 @@
 app.service("LoginService", function ($http, $q, API_URL) {
 
-    this.login = function (user, pass) {
+    this.login = function (email, pass) {
         var defered = $q.defer();
         var promise = defered.promise;
 
@@ -8,7 +8,7 @@ app.service("LoginService", function ($http, $q, API_URL) {
                 method: 'POST',
                 url: API_URL + "people/login",
                 data: {
-                    'user': user,
+                    'email': email,
                     'pass': pass
                 }
             })

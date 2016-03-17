@@ -1,20 +1,18 @@
-app.controller('LoginController', function ($scope, LoginService) {
+app.controller('LoginController', function ($scope, LoginService, Auth) {
 
-    $scope.user = "";
+    $scope.email = "";
     $scope.pass = "";
 
     $scope.userData = [];
 
     $scope.login = function () {
-        LoginService.login($scope.user, $scope.pass)
+        LoginService.login($scope.email, $scope.pass)
             .then(function (data) {
                 if (data !== undefined) {
-                    $scope.userData.push(data);
+                    Auth.login(data);
                 } else {
                     alert("Invalid.")
                 }
             });
     }
-
-
 });

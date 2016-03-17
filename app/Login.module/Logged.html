@@ -1,0 +1,22 @@
+<div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{ userData.id }}</td>
+            <td>{{ userData.name }} {{userData.lastName}}</td>
+            <td>{{ userData.email }}</td>
+            <td>{{ userData.type }}</td>
+            <td>
+                <button type="button" class="btn btn-primary" ng-click="logout()">Logout</button>
+            </td>
+        </tr>
+    </table>
+
+</div>

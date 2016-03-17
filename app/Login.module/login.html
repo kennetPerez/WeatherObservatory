@@ -1,0 +1,45 @@
+<div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <form name="formLogin" class="form-horizontal" novalidate="">
+
+                <div class="form-group error">
+                    <label for="inputUser" class="col-sm-3 control-label">User</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control has-error" id="inputUser" name="inputUser" placeholder="Username" ng-model="user" ng-required="true" autofocus>
+                        <span class="help-inline" ng-show="formLogin.inputUser.$invalid && formLogin.inputUser.$touched">User field is required</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPass" class="col-sm-3 control-label">Pass</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="inputPass" name="inputPass" placeholder="Password" ng-model="pass" ng-required="true">
+                        <span class="help-inline" ng-show="formLogin.inputPass.$invalid && formLogin.inputPass.$touched">Valid Password field is required</span>
+                    </div>
+                </div>
+            </form>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="btn-save" ng-click="login()" ng-disabled="formLogin.$invalid">Login</button>
+            </div>
+
+        </div>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User</th>
+            <th>Type</th>
+        </tr>
+        <tr ng-repeat="users in userData | orderBy:'+id'">
+            <td>{{ users.id }}</td>
+            <td>{{ users.name }} {{users.lastName}}</td>
+            <td>{{ users.email }}</td>
+            <td>{{ users.user }}</td>
+            <td>{{ users.type }}</td>
+        </tr>
+    </table>
+</div>

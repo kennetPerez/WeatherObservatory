@@ -5,8 +5,8 @@ var app = angular.module('weatherObservatory', ['ngRoute'])
 .config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            controller: "homeController",
-            templateUrl: "views/home.html"
+            controller: "LoginController",
+            templateUrl: "Login.module/login.html"
         })
         .otherwise({
             redirectTo: "/"

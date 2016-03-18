@@ -1,0 +1,46 @@
+<div>
+    <form name="formRegister" class="form-horizontal" novalidate="">
+
+        <div class="form-group error">
+            <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <input type="email" class="form-control has-error" id="inputEmail" name="inputEmail" placeholder="Email" ng-model="user.email" ng-required="true" autofocus>
+                <span class="help-inline" ng-show="formRegister.inputEmail.$invalid && formRegister.inputEmail.$touched">Email field is required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputName" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" ng-model="user.name" ng-required="true">
+                <span class="help-inline" ng-show="formRegister.inputName.$invalid && formRegister.inputName.$touched">Name field is required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="LastName" ng-model="user.lastName" ng-required="true">
+                <span class="help-inline" ng-show="formRegister.inputLastName.$invalid && formRegister.inputLastName.$touched">Last Name field is required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPass" class="col-sm-3 control-label">Pass</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPass" name="inputPass" placeholder="Password" ng-model="user.pass" ng-required="true">
+                <span class="help-inline" ng-show="formRegister.inputPass.$invalid && formRegister.inputPass.$touched">Password field is required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputType" class="col-sm-3 control-label">Type</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputType" name="inputType" placeholder="Type" ng-model="user.type" ng-required="true">
+                <span class="help-inline" ng-show="formRegister.inputType.$invalid && formRegister.inputType.$touched">Type field is required</span>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btn-save" ng-click="register()" ng-disabled="formRegister.$invalid">Register</button>
+    </form>
+</div>

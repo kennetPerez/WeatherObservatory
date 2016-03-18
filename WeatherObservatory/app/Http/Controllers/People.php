@@ -25,23 +25,22 @@ class People extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$person = new Person;
+
+        $person->name = $request->input('name');
+        $person->email = $request->input('email');
+        $person->lastName = $request->input('lastName');
+        $person->type = $request->input('type');
+        $person->pass = md5($request->input('pass'));
+        $person->save();
+
+        return $person;
 	}
 
 	/**

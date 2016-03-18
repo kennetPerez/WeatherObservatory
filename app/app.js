@@ -16,16 +16,20 @@ var app = angular.module('weatherObservatory', ['ngRoute', 'ngCookies'])
 function config($routeProvider) {
     $routeProvider
         .when("/", {
-        controller: "LoginController",
-        templateUrl: "Login.module/login.html"
-    })
+            controller: "LoginController",
+            templateUrl: "Login.module/login.html"
+        })
         .when("/logged", {
-        controller: "LoggedController",
-        templateUrl: "Login.module/Logged.html"
-    })
+            controller: "LoggedController",
+            templateUrl: "Login.module/Logged.html"
+        })
+        .when("/register", {
+            controller: "RegisterController",
+            templateUrl: "People.module/Register/register.html"
+        })
         .otherwise({
-        redirectTo: "/"
-    });
+            redirectTo: "/"
+        });
 }
 
 
@@ -62,13 +66,15 @@ function auth($cookies, $location) {
         var privateRoutes = ["/logged"];
         var userData = $cookies.getObject('userData');
 
-        if(in_array($location.path(), privateRoutes) && typeof(userData) == "undefined")
-        {
+        if (in_array("/", privateRoutes) && typeof (userData) == "undefined") {
             $location.path("/");
         }
 
-        if(in_array("/logged", privateRoutes) && typeof(userData) != "undefined" && userData.type === 0)
-        {
+        if (in_array("/register", privateRoutes) && typeof (userData) == "undefined") {
+            $location.path("/register");
+        }
+
+        if (in_array("/logged", privateRoutes) && typeof (userData) != "undefined" && userData.type === 0) {
             $location.path("/logged");
         }
     }

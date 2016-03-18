@@ -1,9 +1,8 @@
-app.controller('LoginController', function ($scope, LoginService, Auth) {
+app.controller('LoginController', function ($scope, $location, LoginService, Auth) {
 
     $scope.email = "";
     $scope.pass = "";
 
-    $scope.userData = [];
 
     $scope.login = function () {
         LoginService.login($scope.email, $scope.pass)
@@ -14,5 +13,9 @@ app.controller('LoginController', function ($scope, LoginService, Auth) {
                     alert("Invalid.")
                 }
             });
+    }
+
+    $scope.register = function () {
+        $location.path("/register");
     }
 });

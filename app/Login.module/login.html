@@ -7,7 +7,7 @@
                 <div class="form-group error">
                     <label for="inputEmail" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control has-error" id="inputEmail" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true" autofocus>
+                        <input type="email" class="form-control has-error" id="inputEmail" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true">
                         <span class="help-inline" ng-show="formLogin.inputEmail.$invalid && formLogin.inputEmail.$touched">Email field is required</span>
                     </div>
                 </div>
@@ -21,9 +21,9 @@
                 </div>
 
                 <button type="button" class="btn btn-primary" id="btn-save" ng-click="login()" ng-disabled="formLogin.$invalid">Login</button>
+
             </form>
-
-
+            <button type="button" class="btn btn-primary" id="btn-save" ng-click="register()">Registrar</button>
         </div>
     </div>
 </div>

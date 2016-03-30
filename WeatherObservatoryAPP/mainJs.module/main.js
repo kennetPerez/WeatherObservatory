@@ -78,9 +78,9 @@ WeatherApp.factory('settings', ['$rootScope', function($rootScope) {
             pageBodySolid: false, // solid body color state
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
-        assetsPath: '../assets',
-        globalPath: '../assets/global',
-        layoutPath: '../assets/layouts/layout4',
+        assetsPath: 'assets',
+        globalPath: 'assets/global',
+        layoutPath: 'assets/layouts/layout4',
     };
 
     $rootScope.settings = settings;
@@ -230,15 +230,15 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            '../assets/global/plugins/morris/morris.css',                            
-                            '../assets/global/plugins/morris/morris.min.js',
-                            '../assets/global/plugins/morris/raphael-min.js',                            
-                            '../assets/global/plugins/jquery.sparkline.min.js',
+                            'assets/global/plugins/morris/morris.css',                            
+                            'assets/global/plugins/morris/morris.min.js',
+                            'assets/global/plugins/morris/raphael-min.js',                            
+                            'assets/global/plugins/jquery.sparkline.min.js',
                             
-                            '../assets/global/plugins/lodash.underscore.min.js',
-                            '../assets/global/plugins/angular-google-maps.min.js',                            
+                            'assets/global/plugins/lodash.underscore.min.js',
+                            'assets/global/plugins/angular-google-maps.min.js',                            
 
-                            '../assets/pages/scripts/dashboard.min.js',
+                            'assets/pages/scripts/dashboard.min.js',
                             'dashboard.module/DashboardController.js',
                         ] 
                     });
@@ -259,13 +259,13 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                                 name: 'WeatherApp',  
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
-                                    '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
-                                    '../assets/pages/css/profile.css',
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                                    'assets/pages/css/profile.css',
                                     
-                                    '../assets/global/plugins/jquery.sparkline.min.js',
-                                    '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                                    'assets/global/plugins/jquery.sparkline.min.js',
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
 
-                                    '../assets/pages/scripts/profile.min.js',
+                                    'assets/pages/scripts/profile.min.js',
 
                                     'profile.module/UserProfileController.js'
                                 ]                    
@@ -285,12 +285,12 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                     return $ocLazyLoad.load([{
                         name: 'WeatherApp',
                         files: [
-                            '../assets/global/plugins/datatables/datatables.min.css', 
-                            '../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                            'assets/global/plugins/datatables/datatables.min.css', 
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
 
-                            '../assets/global/plugins/datatables/datatables.all.min.js',
+                            'assets/global/plugins/datatables/datatables.all.min.js',
 
-                            '../assets/pages/scripts/table-datatables-managed.min.js',
+                            'assets/pages/scripts/table-datatables-managed.min.js',
                             
                             'astronomicTable.module/AstronomicTableController.js'
                         ] 
@@ -311,10 +311,10 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                            'assets/global/plugins/jstree/dist/themes/default/style.min.css',
 
-                            '../assets/global/plugins/jstree/dist/jstree.min.js',
-                            '../assets/pages/scripts/ui-tree.min.js',
+                            'assets/global/plugins/jstree/dist/jstree.min.js',
+                            'assets/pages/scripts/ui-tree.min.js',
                             'informationTables.module/informationTController.js'
                         ] 
                     }]);
@@ -334,22 +334,22 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
-                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
-                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
-                            '../assets/global/plugins/typeahead/typeahead.css',
+                            'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            'assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            'assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            'assets/global/plugins/typeahead/typeahead.css',
 
-                            '../assets/global/plugins/fuelux/js/spinner.min.js',
-                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
-                            '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
-                            '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
-                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
-                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
-                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
-                            '../assets/global/plugins/typeahead/handlebars.min.js',
-                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
-                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            'assets/global/plugins/fuelux/js/spinner.min.js',
+                            'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            'assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            'assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            'assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            'assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            'assets/global/plugins/typeahead/handlebars.min.js',
+                            'assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            'assets/pages/scripts/components-form-tools-2.min.js',
 
                             'climograms.module/climogramsController.js'
                         ] 
@@ -370,20 +370,20 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/clockface/css/clockface.css',
-                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
-                            '../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
-                            '../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
-                            '../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                            'assets/global/plugins/clockface/css/clockface.css',
+                            'assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            'assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            'assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            'assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
 
-                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-                            '../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
-                            '../assets/global/plugins/clockface/js/clockface.js',
-                            '../assets/global/plugins/moment.min.js',
-                            '../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
-                            '../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+                            'assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            'assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            'assets/global/plugins/clockface/js/clockface.js',
+                            'assets/global/plugins/moment.min.js',
+                            'assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            'assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
 
-                            '../assets/pages/scripts/components-date-time-pickers.min.js',
+                            'assets/pages/scripts/components-date-time-pickers.min.js',
 
                             'generalGraphics.module/generalGController.js'
                         ] 
@@ -404,15 +404,15 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
-                            '../assets/global/plugins/select2/css/select2.min.css',
-                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            'assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                            'assets/global/plugins/select2/css/select2.min.css',
+                            'assets/global/plugins/select2/css/select2-bootstrap.min.css',
 
-                            '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
-                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            'assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                            'assets/global/plugins/select2/js/select2.full.min.js',
 
-                            '../assets/pages/scripts/components-bootstrap-select.min.js',
-                            '../assets/pages/scripts/components-select2.min.js',
+                            'assets/pages/scripts/components-bootstrap-select.min.js',
+                            'assets/pages/scripts/components-select2.min.js',
 
                             'temporalGraphics.module/temporalGController.js'
                         ] 
@@ -433,12 +433,12 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [                             
-                            '../assets/global/plugins/datatables/datatables.min.css', 
-                            '../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                            'assets/global/plugins/datatables/datatables.min.css', 
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
 
-                            '../assets/global/plugins/datatables/datatables.all.min.js',
+                            'assets/global/plugins/datatables/datatables.all.min.js',
 
-                            '../assets/pages/scripts/table-datatables-managed.min.js',
+                            'assets/pages/scripts/table-datatables-managed.min.js',
 
                             'variableGraphics.module/graphicsVController.js'
                         ]
@@ -459,13 +459,13 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/datatables/datatables.min.css', 
-                            '../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            'assets/global/plugins/datatables/datatables.min.css', 
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                            'assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
 
-                            '../assets/global/plugins/datatables/datatables.all.min.js',
-                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-                            '../assets/global/scripts/datatable.min.js',
+                            'assets/global/plugins/datatables/datatables.all.min.js',
+                            'assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            'assets/global/scripts/datatable.min.js',
 
                             'mainJs.module/scripts/table-ajax.js',
                             'tableVariables.module/tableVController.js'
@@ -487,13 +487,13 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/datatables/datatables.min.css', 
-                            '../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            'assets/global/plugins/datatables/datatables.min.css', 
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                            'assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
 
-                            '../assets/global/plugins/datatables/datatables.all.min.js',
-                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-                            '../assets/global/scripts/datatable.min.js',
+                            'assets/global/plugins/datatables/datatables.all.min.js',
+                            'assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            'assets/global/scripts/datatable.min.js',
 
                             'mainJs.module/scripts/table-ajax.js',
                             'tableClime.module/climeTableController.js'
@@ -516,16 +516,16 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         name: 'WeatherApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
-                            '../assets/apps/css/todo-2.css',
-                            '../assets/global/plugins/select2/css/select2.min.css',
-                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            'assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            'assets/apps/css/todo-2.css',
+                            'assets/global/plugins/select2/css/select2.min.css',
+                            'assets/global/plugins/select2/css/select2-bootstrap.min.css',
 
-                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            'assets/global/plugins/select2/js/select2.full.min.js',
                             
-                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            'assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
 
-                            '../assets/apps/scripts/todo-2.min.js',
+                            'assets/apps/scripts/todo-2.min.js',
 
                             'map.module/mapController.js'  
                         ]                    

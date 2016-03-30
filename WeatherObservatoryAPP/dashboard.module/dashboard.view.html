@@ -1,0 +1,21 @@
+<!-- Home de la pagina -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active"> Home </li>
+</ul>
+
+<div ng-controller="DashboardController">
+
+        <div class="row">
+
+            <div class="map col-md-offset-1 col-md-10  col-sm-12 col-xs-12" >
+                <google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
+                    <markers models="map.markers" coords="'self'" options="'options'" isLabel='true' click="onClick" events="markers.events">
+                    </markers>
+                </google-map>
+            </div>
+
+        </div>
+</div>

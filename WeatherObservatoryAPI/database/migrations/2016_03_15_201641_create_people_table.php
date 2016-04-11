@@ -18,7 +18,6 @@ class CreatePeopleTable extends Migration {
             $table->integer('type');
             $table->string('pass');
             $table->string('name');
-            $table->string('lastName');
             $table->string('email')->unique();
             $table->timestamps();   
 		});

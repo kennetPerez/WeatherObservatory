@@ -10,7 +10,7 @@ class People extends Controller {
 
 
     public function login(Request $request) {
-        return $person = Person::where('email', $request->input('email'))->where('pass', md5($request->input('pass')))->select('id','email','name','lastName', 'type')->get();
+        return $person = Person::where('email', $request->input('email'))->where('pass', md5($request->input('pass')))->select('id','email','name', 'type')->get();
     }
 
 
@@ -35,7 +35,6 @@ class People extends Controller {
 
         $person->name = $request->input('name');
         $person->email = $request->input('email');
-        $person->lastName = $request->input('lastName');
         $person->type = $request->input('type');
         $person->pass = md5($request->input('pass'));
         $person->save();

@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder {
         DB::table('people')->delete();
 
         $persons = array(
-            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Kenneth', 'lastName' => 'Perez', 'email' => 'kenn.perez@gmail.com'],
-            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Cristian', 'lastName' => 'Salas', 'email' => 'cs.salas94@gmail.com'],
-            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Mainor', 'lastName' => 'Gamboa', 'email' => 'mainor.gamboa.rodriguez@gmail.com']
+            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Kenneth Pérez Alfaro', 'email' => 'kenn.perez@gmail.com'],
+            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Cristian Salas Salazar', 'email' => 'cs.salas94@gmail.com'],
+            ['type' => 0, 'pass' => md5('12345'), 'name' => 'Mainor Gamboa Rodriguez', 'email' => 'mainor.gamboa.rodriguez@gmail.com']
         );
 
         foreach($persons as $person){

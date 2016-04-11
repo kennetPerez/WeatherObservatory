@@ -7,6 +7,10 @@
 </ul>
 <div class="row" ng-controller="UserProfileController">
     <div class="col-md-12">
-        {{Perfil}}
+        {{user.name}}
+        <br> {{user.type}}
+        <br> {{user.email}}
+        <br>
+        <button ng-click="logout()">Logout</button>
     </div>
 </div>

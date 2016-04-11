@@ -132,6 +132,58 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
             }]
         }
     })
+	 // User Login
+                .state("login", {
+                    url: "/login",
+                    templateUrl: "login.module/login.html",
+                    data: {pageTitle: 'Login'},
+                    controller: "LoginController",
+                    resolve: {
+                        deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                name: 'WeatherApp',  
+                                insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                                files: [
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                                    'assets/pages/css/profile.css',
+                                    
+                                    'assets/global/plugins/jquery.sparkline.min.js',
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                                    'assets/pages/scripts/profile.min.js',
+
+                                    'login.module/login.controller.js'
+                                ]                    
+                            });
+                        }]
+                    }
+                })
+                
+        // User Register
+                .state("register", {
+                    url: "/Register",
+                    templateUrl: "register.module/register.html",
+                    data: {pageTitle: 'Register'},
+                    controller: "RegisterController",
+                    resolve: {
+                        deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                name: 'WeatherApp',  
+                                insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                                files: [
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                                    'assets/pages/css/profile.css',
+                                    
+                                    'assets/global/plugins/jquery.sparkline.min.js',
+                                    'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+
+                                    'assets/pages/scripts/profile.min.js',
+
+                                    'register.module/register.controller.js'
+                                ]                    
+                            });
+                        }]
+                    }
+                })
 
     //informacion Astronomica
         .state('astronomicTable', {

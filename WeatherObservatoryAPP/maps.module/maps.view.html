@@ -15,9 +15,9 @@
                                     <i class="icon-settings"></i> &nbsp;
                                     <i class="fa fa-angle-down"></i>
                                 </a>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="#">
+                                        <a data-toggle="modal" data-target="#myModal">
                                             <i class="i"></i> Add Observatory </a>
                                     </li>
                                     <li class="divider"> </li>
@@ -65,4 +65,50 @@
                    Mapa
                 </div>
             </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-green">
+                    <i class="fa fa-sun-o font-green"></i>
+                    <span class="caption-subject bold uppercase"> Agregar Observatorio</span>
+                </div>
+                
+            </div>
+            <div class="portlet-body form">
+                <form role="form">
+                    <div class="form-body">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="text" class="form-control  input-sm" id="form_control_1">
+                            <label for="form_control_1">Nombre Del Observatorio</label>
+                            <span class="help-block">Referencia que se hara al Observatorio</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                            <input type="text" class="form-control  input-sm" id="form_control_1">
+                            <label for="form_control_1">Latitud</label>
+                            <span class="help-block">Puede ser cambiado despues</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label has-warning">
+                            <input type="text" class="form-control  input-sm" id="form_control_1">
+                            <label for="form_control_1">Longitud</label>
+                            <span class="help-block">Puede ser cambiado despues</span>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn dark btn-outline" data-dismiss="modal"><span class="md-click-circle md-click-animate" style="height: 65px; width: 65px; top: -18.5px; left: 1.76563px;"></span>Close</button>
+            <button type="button" class="btn green">Save changes</button>
+        </div>
+    </div>
+
+  </div>
 </div>

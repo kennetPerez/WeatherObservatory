@@ -17,3 +17,5 @@ Route::get('/api/v1/services', 'Services@index');
 
 Route::post('/api/v1/people/login', 'People@login');
 Route::post('/api/v1/people/register', 'People@store');
+Route::post('/api/v1/people/change_pass', 'People@changePass');
+Route::delete('/api/v1/people/{id}', 'People@destroy');

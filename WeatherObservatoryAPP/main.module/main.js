@@ -48,7 +48,7 @@ WeatherApp.factory('Auth', ['$cookies', '$location', function ($cookies, $locati
 
     function login(data) {
         $cookies.putObject('userData', data);
-        $location.path("/profile");
+        $location.path("/profile/account");
     }
 
     function logout() {
@@ -67,13 +67,13 @@ WeatherApp.factory('Auth', ['$cookies', '$location', function ($cookies, $locati
     }
 
     function check() {
-        var privateRoutes = ["/profile"];
+        var privateRoutes = ["/profile/account", "/profile/myObservatory", "/profile"];
         var userData = $cookies.getObject('userData');
 
         if (in_array($location.path(), privateRoutes) && typeof (userData) == "undefined") {
             $location.path("/login");
         } else if (in_array($location.path(), privateRoutes) && typeof (userData) != "undefined") {
-            $location.path("/profile");
+            $location.path("/profile/account");
         }
     }
 }]);
@@ -158,7 +158,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     // User Profile
-        .state("profile", {
+    .state("profile", {
         url: "/profile",
         templateUrl: "profile.module/profile.view.html",
         data: {
@@ -173,6 +173,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     files: [
                         'assets/pages/css/profile.css',
                         'assets/pages/scripts/profile.min.js',
+                        'profile.module/UserProfile.service.js',
                         'profile.module/UserProfile.controller.js'
                     ]
                 });
@@ -180,8 +181,25 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
         }
     })
 
+    .state("profile.account", {
+        url: "/account",
+        templateUrl: "profile.module/account.view.html",
+        data: {
+            pageTitle: 'User Profile'
+        }
+    })
+
+    // User Profile Account
+    .state("profile.observatory", {
+        url: "/myObservatory",
+        templateUrl: "profile.module/observatory.view.html",
+        data: {
+            pageTitle: 'User Account'
+        }
+    })
+
     // User Login
-        .state("login", {
+    .state("login", {
         url: "/login",
         templateUrl: "login.module/login.html",
         data: {
@@ -210,7 +228,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     // User Register
-        .state("register", {
+    .state("register", {
         url: "/register",
         templateUrl: "register.module/register.html",
         data: {
@@ -240,7 +258,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //informacion Astronomica
-        .state('astronomicTable', {
+    .state('astronomicTable', {
         url: "/astronomicTable",
         templateUrl: "astronomicTable.module/astronomicTable.view.html",
         data: {
@@ -264,7 +282,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //informacion Climatica
-        .state('climeTable', {
+    .state('climeTable', {
         url: "/climeTable",
         templateUrl: "climeTable.module/climeTable.view.html",
         data: {
@@ -289,7 +307,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //tablas informativas
-        .state('informationTables', {
+    .state('informationTables', {
         url: "/informationTables",
         templateUrl: "informationTables.module/informationTables.view.html",
         data: {
@@ -310,7 +328,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //climodiagramas
-        .state('climograms', {
+    .state('climograms', {
         url: "/climograms",
         templateUrl: "climograms.module/climograms.view.html",
         data: {
@@ -331,7 +349,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //graficos Generales
-        .state('generalGraph', {
+    .state('generalGraph', {
         url: "/generalGraph",
         templateUrl: "generalGraph.module/generalGraph.view.html",
         data: {
@@ -352,7 +370,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //graficos Temporales
-        .state('temporalGraph', {
+    .state('temporalGraph', {
         url: "/temporalGraph",
         templateUrl: "temporalGraph.module/temporalGraph.view.html",
         data: {
@@ -373,7 +391,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //graficos por variable
-        .state('variableGraph', {
+    .state('variableGraph', {
         url: "/variableGraph",
         templateUrl: "variableGraph.module/variableGraph.view.html",
         data: {
@@ -394,7 +412,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //Tablas por variables
-        .state('variableTable', {
+    .state('variableTable', {
         url: "/variableTable",
         templateUrl: "variableTable.module/variableTable.view.html",
         data: {
@@ -415,7 +433,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     // mapas
-        .state('maps', {
+    .state('maps', {
         url: "/maps",
         templateUrl: "maps.module/maps.view.html",
         data: {

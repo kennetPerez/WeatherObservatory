@@ -14,6 +14,20 @@ class People extends Controller {
     }
 
 
+    public function changePass(Request $request) {
+        $person = Person::find($request->input('id'));
+
+        if($person->pass != md5($request->input('current'))){
+            return 1;
+        }
+        else{
+            $person->pass = md5($request->input('new'));
+            $person->save();
+            return 0;
+        }
+    }
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -83,7 +97,10 @@ class People extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$person = Person::find($id);
+
+        $person->delete();
+        return 0;
 	}
 
 }

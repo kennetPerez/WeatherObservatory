@@ -5,12 +5,53 @@
     </li>
     <li class="active"> Perfil </li>
 </ul>
-<div class="row" ng-controller="UserProfileController">
+
+
+
+
+<div class="row">
+
     <div class="col-md-12">
-        {{user.name}}
-        <br> {{user.type}}
-        <br> {{user.email}}
-        <br>
-        <button ng-click="logout()">Logout</button>
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="http://www.tugestor.es/demo/dist/img/default_user.png" class="img-responsive" alt=""> </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> {{user.name}} </div>
+                    <div class="profile-usertitle-job"> {{user.email}} </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-circle green-haze btn-sm" ng-click="logout()">Cerrar Sesion</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li ng-class="{active: $state.includes('profile.account')}">
+                            <a ui-sref="profile.account">
+                                <i class="icon-settings"></i> Cuenta </a>
+                        </li>
+                        <li ng-class="{active: $state.includes('profile.observatory')}">
+                            <a ui-sref="profile.observatory">
+                                <i class="fa fa-sun-o"></i> Observatorios </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+        <div ui-view class="profile-content fade-in-up"> </div>
+        <!-- END PROFILE CONTENT -->
     </div>
+
 </div>

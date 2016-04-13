@@ -31,57 +31,78 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         } else {
             UserProfileService.changePass($scope.pass)
                 .then(function (data) {
-                    if (data == '0') {
-                        $scope.correctChange = true;
-                        $timeout(function () {
-                            $scope.correctChange = false;
-                        }, 3000);
+                if (data == '0') {
+                    $scope.correctChange = true;
+                    $timeout(function () {
+                        $scope.correctChange = false;
+                    }, 3000);
 
-                        $scope.pass = {
-                            new: "",
-                            current: "",
-                            confirm: "",
-                            id: $scope.user.id
-                        }
-
-                        form.inputConfirmPass.$invalid = false;
-                        form.inputConfirmPass.$touched = false;
-                        form.inputNewPass.$invalid = false;
-                        form.inputNewPass.$touched = false;
-                        form.inputPass.$invalid = false;
-                        form.inputPass.$touched = false;
-
-
-                    } else if (data == '1') {
-                        $scope.incorrectPass = true;
-                        $timeout(function () {
-                            $scope.incorrectPass = false;
-                        }, 3000);
+                    $scope.pass = {
+                        new: "",
+                        current: "",
+                        confirm: "",
+                        id: $scope.user.id
                     }
-                })
+
+                    form.inputConfirmPass.$invalid = false;
+                    form.inputConfirmPass.$touched = false;
+                    form.inputNewPass.$invalid = false;
+                    form.inputNewPass.$touched = false;
+                    form.inputPass.$invalid = false;
+                    form.inputPass.$touched = false;
+
+
+                } else if (data == '1') {
+                    $scope.incorrectPass = true;
+                    $timeout(function () {
+                        $scope.incorrectPass = false;
+                    }, 3000);
+                }
+            })
                 .catch(function (err) {
-                    console.log(err);
-                });
+                console.log(err);
+            });
         }
     }
 
     $scope.deleteAccount = function () {
-        var isConfirmDelete = confirm('¿Si elimina la cuenta todo sera eliminado?');
-        if (isConfirmDelete) {
-            UserProfileService.deleteAccount($scope.user.id)
-                .then(function (data) {
-                    $location.path("/login");
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-        } else {
-            return false;
-        }
 
+        swal(
+            {
+                title: "¿Estas seguro?",
+                text: "Si eliminas tu cuenta, todos tus datos seran eliminados!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, eliminar!",
+                cancelButtonText: "No, cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm)
+            {
+                if (isConfirm)
+                {
+                    Auth.logout();
+                    UserProfileService.deleteAccount($scope.user.id)
+                        .then(function (data) {
+                        swal("Eliminada", "Su cuenta fue eliminada correctamente.", "success");
+                        $location.path("/login");
+                    })
+                        .catch(function (err) {
+                        console.log(err);
+                    });
+                }
+                else
+                {
+                    swal("Cancelado", "Su cuenta no fue eliminada.", "error");
+                }
+            });
     }
 
+
+
     // set sidebar closed and body solid layout mode
-    //$rootScope.settings.layout.pageBodySolid = true;
-    //$rootScope.settings.layout.pageSidebarClosed = true;
+    $rootScope.settings.layout.pageBodySolid = true;
+    $rootScope.settings.layout.pageSidebarClosed = true;
 });

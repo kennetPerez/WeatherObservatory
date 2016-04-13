@@ -172,7 +172,35 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     insertBefore: '#ng_load_plugins_before',
                     files: [
                         'assets/pages/css/profile.css',
+                        'assets/global/css/sweetalert.css',
+
+
+
+                        'assets/global/plugins/datatables/datatables.min.css',
+                        'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                        'assets/global/plugins/datatables/datatables.all.min.js',
+                        'assets/pages/scripts/table-datatables-managed.min.js',
+                        'assets/global/plugins/clockface/css/clockface.css',
+                        'assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                        'assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                        'assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                        'assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css',
+                        'assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+
+                        'assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                        'assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                        'assets/global/plugins/clockface/js/clockface.js',
+                        'assets/global/plugins/moment.min.js',
+                        'assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js',
+                        'assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                        'assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+
+                        'assets/pages/scripts/components-date-time-pickers.min.js',
+
+
+
                         'assets/pages/scripts/profile.min.js',
+                        'assets/global/plugins/sweetalert.min.js',
                         'profile.module/UserProfile.service.js',
                         'profile.module/UserProfile.controller.js'
                     ]
@@ -251,55 +279,6 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
 
                         'register.module/register.service.js',
                         'register.module/register.controller.js'
-                    ]
-                });
-            }]
-        }
-    })
-
-    //informacion Astronomica
-    .state('astronomicTable', {
-        url: "/astronomicTable",
-        templateUrl: "astronomicTable.module/astronomicTable.view.html",
-        data: {
-            pageTitle: 'Astronomic Table'
-        },
-        controller: "AstronomicTableController",
-        resolve: {
-            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load([{
-                    name: 'WeatherApp',
-                    files: [
-                        'assets/global/plugins/datatables/datatables.min.css',
-                        'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-                        'assets/global/plugins/datatables/datatables.all.min.js',
-                        'assets/pages/scripts/table-datatables-managed.min.js',
-                        'astronomicTable.module/astronomicTable.controller.js'
-                    ]
-                }]);
-            }]
-        }
-    })
-
-    //informacion Climatica
-    .state('climeTable', {
-        url: "/climeTable",
-        templateUrl: "climeTable.module/climeTable.view.html",
-        data: {
-            pageTitle: 'Climatic Table'
-        },
-        controller: "climeTableController",
-        resolve: {
-            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load({
-                    name: 'WeatherApp',
-                    insertBefore: '#ng_load_plugins_before',
-                    files: [
-                        'assets/global/plugins/datatables/datatables.min.css',
-                        'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-                        'assets/global/plugins/datatables/datatables.all.min.js',
-                        'assets/pages/scripts/table-datatables-managed.min.js',
-                        'climeTable.module/climeTable.controller.js'
                     ]
                 });
             }]

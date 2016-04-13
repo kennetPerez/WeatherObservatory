@@ -3,7 +3,7 @@ var WeatherApp = angular.module("WeatherApp", [
     "ui.bootstrap",
     "oc.lazyLoad",
     "ngSanitize",
-    "google-maps",
+    "ngMap",
     "ngCookies"
 ])
 
@@ -146,11 +146,8 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     name: 'WeatherApp',
                     insertBefore: '#ng_load_plugins_before',
                     files: [
-                        'assets/global/plugins/lodash.underscore.min.js',
-                        'assets/global/plugins/angular-google-maps.min.js',
                         'assets/pages/scripts/dashboard.min.js',
                         'dashboard.module/dashboard.controller.js',
-                        'dashboard.module/MarkerCreator.service.js',
                     ]
                 });
             }]

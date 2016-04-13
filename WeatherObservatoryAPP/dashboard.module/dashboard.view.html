@@ -6,16 +6,42 @@
     <li class="active"> Home </li>
 </ul>
 
-<div ng-controller="DashboardController">
+<div>
 
-        <div class="row">
+    <ng-map class="map col-md-offset-1 col-md-10  col-sm-12 col-xs-12" zoom-to-include-markers='auto' zoom="3">
+        <marker id='{{shop.id}}' position="{{shop.position}}"
+                ng-repeat="shop in stations"
+                on-click="showDetail(shop)">
+        </marker>
 
-            <div class="map col-md-offset-1 col-md-10  col-sm-12 col-xs-12" >
-                <google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
-                    <markers models="map.markers" coords="'self'" options="'options'" isLabel='true' click="onClick" events="markers.events">
-                    </markers>
-                </google-map>
+        <info-window id="foo-iw">
+            <div ng-non-bindable="">
+
+                <div class="portlet light">
+                    <div class="portlet-title tabbable-line">
+                        <div class="caption caption-md">
+                            <i class="fa fa-sun-o font-blue-madison"></i>
+                            <span class="caption-subject font-blue-madison bold uppercase">{{shop.name}}</span>
+                            <span class="caption-helper">{{shop.service}}</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="mt-element-step">
+                            <div class="row step-no-background-thin">
+                                <div class="col-md-4 mt-step-col done">
+                                    <div class="mt-step-number bg-white font-grey">3</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">Deploy</div>
+                                    <div class="mt-step-content font-grey-cascade">Receive item integration</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </info-window>
 
-        </div>
+    </ng-map>
 </div>
+
+

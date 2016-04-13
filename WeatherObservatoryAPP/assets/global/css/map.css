@@ -3,6 +3,8 @@
     {
         height: 450px;
         box-shadow: black 0px 3px 25px;
+        padding-left: 0px;
+        padding-right: 0px;
 
     }
 }
@@ -12,7 +14,8 @@
     {
         height: 800px;
         box-shadow: black 0px 3px 25px;
-
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 @media screen and (min-height: 1080px) {
@@ -20,34 +23,7 @@
     {
         height: 800px;
         box-shadow: black 0px 3px 25px;
-
+        padding-left: 0px;
+        padding-right: 0px;
     }
-}
-
-
-
-div.map_container {
-    position: absolute;
-}
-
-.angular-google-map-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-}
-
-div.controls {
-    float: right;
-    width: 30%;
-}
-
-.markerlabel {
-    font-weight: bold;
-    font-size: 13px;
-    border: 1px solid #333;
-    padding: 2px;
-    background: #fff;
-    color: #333;
 }

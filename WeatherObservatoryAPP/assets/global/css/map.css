@@ -1,26 +1,28 @@
+.map {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 @media screen and (min-height: 480px) {
-    .map
-    {
+    .map {
         height: 450px;
         box-shadow: black 0px 3px 25px;
         padding-left: 0px;
         padding-right: 0px;
-
     }
 }
 
 @media screen and (min-height: 768px) {
-    .map
-    {
+    .map {
         height: 800px;
         box-shadow: black 0px 3px 25px;
         padding-left: 0px;
         padding-right: 0px;
     }
 }
+
 @media screen and (min-height: 1080px) {
-    .map
-    {
+    .map {
         height: 800px;
         box-shadow: black 0px 3px 25px;
         padding-left: 0px;

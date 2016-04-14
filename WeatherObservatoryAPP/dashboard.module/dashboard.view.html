@@ -1,3 +1,9 @@
+<style>
+    li {
+        font-size: 15px;
+        list-style: none;
+    }
+</style>
 <!-- Home de la pagina -->
 <ul class="page-breadcrumb breadcrumb">
     <li>
@@ -8,10 +14,8 @@
 
 <div>
 
-    <ng-map class="map col-md-offset-1 col-md-10  col-sm-12 col-xs-12" zoom-to-include-markers='auto' zoom="3">
-        <marker id='{{shop.id}}' position="{{shop.position}}"
-                ng-repeat="shop in stations"
-                on-click="showDetail(shop)">
+    <ng-map class="map col-md-offset-1 col-md-10  col-sm-12" zoom-to-include-markers='auto' zoom="3">
+        <marker id='{{station.id}}' position="{{station.position}}" ng-repeat="station in stations" on-click="showDetail(station)" animation="DROP">
         </marker>
 
         <info-window id="foo-iw">
@@ -21,21 +25,18 @@
                     <div class="portlet-title tabbable-line">
                         <div class="caption caption-md">
                             <i class="fa fa-sun-o font-blue-madison"></i>
-                            <span class="caption-subject font-blue-madison bold uppercase">{{shop.name}}</span>
-                            <span class="caption-helper">{{shop.service}}</span>
+                            <span class="caption-subject font-blue-madison bold uppercase">{{station.name}}</span>
+                            <span class="caption-helper">{{station.service}}</span>
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <div class="mt-element-step">
-                            <div class="row step-no-background-thin">
-                                <div class="col-md-4 mt-step-col done">
-                                    <div class="mt-step-number bg-white font-grey">3</div>
-                                    <div class="mt-step-title uppercase font-grey-cascade">Deploy</div>
-                                    <div class="mt-step-content font-grey-cascade">Receive item integration</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <li><img class="png-icon " src="./dashboard.module/images/temperatura.png" style="width: 24px; height: 24px;"> Temperatura 30°</li>
+                    <li><img class="png-icon" src="./dashboard.module/images/lluvia.png" style="width: 24px; height: 24px;"> Precipitacion 50</li>
+                    <li><img class="png-icon" src="./dashboard.module/images/viento.png" style="width: 24px; height: 24px;"> Viento 40km/h</li>
+                    <li><img class="png-icon" src="./dashboard.module/images/humedad.png" style="width: 24px; height: 24px;"> Humedad 40</li>
+
+
+
                 </div>
 
             </div>
@@ -43,5 +44,3 @@
 
     </ng-map>
 </div>
-
-

@@ -5,16 +5,25 @@ angular.module('WeatherApp').service("LoginService", function ($http, $q, API_UR
         var promise = defered.promise;
 
         $http({
-                method: 'POST',
-                url: API_URL + "people/login",
-                data: {
-                    'email': email,
-                    'pass': pass
-                }
+                method: 'GET',
+                url: API_URL + "people"
             })
             .success(function (response) {
-                defered.resolve(response[0]);
+                $http({
+                        method: 'POST',
+                        url: API_URL + "people/login",
+                        data: {
+                            'email': email,
+                            'pass': pass
+                        }
+                    })
+                    .success(function (response) {
+                        defered.resolve(response[0]);
+                    });
+
             });
+
+
 
         return promise;
     }

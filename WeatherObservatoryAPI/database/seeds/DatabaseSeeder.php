@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Service;
 use App\Person;
+use App\Station;
 
 class DatabaseSeeder extends Seeder {
 
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-
+        
         DB::table('people')->delete();
 
         $persons = array(
@@ -41,8 +42,23 @@ class DatabaseSeeder extends Seeder {
         foreach($services as $service){
             Service::create($service);
         }
+        
+        
+        
+        DB::table('stations')->delete();
 
-        $this->command->info('Persons/Services tables seededs!');
+        $stations = array(
+            ['idPerson' => 1, 'idService' => 1, 'lat' => '10.741173858409025', 'lon' => '-84.57046882656255', 'locationName' => 'Santa Rosa'],
+            ['idPerson' => 2, 'idService' => 2, 'lat' => '9.529931587524796', 'lon' => '-83.21915046718755', 'locationName' => 'Telire'],
+            ['idPerson' => 3, 'idService' => 3, 'lat' => '8.529931587524796', 'lon' => '-82.21915046718755', 'locationName' => 'No Se']
+        );
+
+        foreach($stations as $station){
+            Station::create($station);
+        }
+        
+
+        $this->command->info('Persons/Services/Stations tables seededs!');
 	}
 
 }

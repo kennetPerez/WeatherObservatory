@@ -1,4 +1,4 @@
-angular.module('WeatherApp').controller('DashboardController', function ($scope, $http, NgMap) {
+angular.module('WeatherApp').controller('DashboardController', function ($scope, $http, NgMap, DashboardService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
@@ -10,8 +10,12 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
         $scope.map = map;
     });
 
+    DashboardService.stations()
+        .then(function (data) {
+            $scope.stations = data;
+        });
 
-    $scope.stations = [
+    /*$scope.stations = [
         {
             id: '1',
             service: "APIXU",
@@ -24,7 +28,7 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
             name: 'Observatorio Telire',
             position: [9.529931587524796, -83.21915046718755]
         }
-    ];
+    ];*/
 
     $scope.showDetail = function (e, station) {
         $scope.station = station;
@@ -34,6 +38,10 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
     $scope.hideDetail = function () {
         $scope.map.hideInfoWindow('foo-iw');
     };
+
+
+
+
 
 
 });

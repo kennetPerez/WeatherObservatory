@@ -15,7 +15,7 @@
 <div>
 
     <ng-map class="map col-md-offset-1 col-md-10  col-sm-12" zoom-to-include-markers='auto' zoom="3">
-        <marker id='{{station.id}}' position="{{station.position}}" ng-repeat="station in stations" on-click="showDetail(station)" animation="DROP">
+        <marker id='{{station.id}}' position="[{{station.lat}},{{station.lon}}]" ng-repeat="station in stations" on-click="showDetail(station)" animation="DROP">
         </marker>
 
         <info-window id="foo-iw">
@@ -25,8 +25,8 @@
                     <div class="portlet-title tabbable-line">
                         <div class="caption caption-md">
                             <i class="fa fa-sun-o font-blue-madison"></i>
-                            <span class="caption-subject font-blue-madison bold uppercase">{{station.name}}</span>
-                            <span class="caption-helper">{{station.service}}</span>
+                            <span class="caption-subject font-blue-madison bold uppercase">{{station.locationName}}</span>
+                            <span class="caption-helper">{{station.idService}}</span>
                         </div>
                     </div>
 

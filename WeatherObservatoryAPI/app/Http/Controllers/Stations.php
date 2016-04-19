@@ -15,7 +15,7 @@ class Stations extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return Station::orderBy('id', 'asc')->get();
 	}
 
 	/**

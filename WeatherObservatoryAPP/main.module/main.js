@@ -147,6 +147,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     insertBefore: '#ng_load_plugins_before',
                     files: [
                         'assets/pages/scripts/dashboard.min.js',
+                        'dashboard.module/dashboard.service.js',
                         'dashboard.module/dashboard.controller.js',
                     ]
                 });

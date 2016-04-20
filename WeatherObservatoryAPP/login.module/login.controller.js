@@ -25,13 +25,6 @@ angular.module('WeatherApp').controller('LoginController', function ($rootScope,
     }
 
 
-    $scope.enterLogin = function (e) {
-        if (e.keyCode === 13) {
-            $scope.login();
-        }
-    }
-
-
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;

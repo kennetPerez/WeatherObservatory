@@ -1,4 +1,4 @@
-angular.module('WeatherApp').controller('UserProfileController', function ($rootScope, $scope, $cookies, $location, $timeout, Auth, UserProfileService) {
+angular.module('WeatherApp').controller('UserProfileController', function ($rootScope, $scope, $cookies, $location, $timeout, Auth, UserProfileService, locationServive) {
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
         Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_profile')); // set profile link active in sidebar menu
@@ -44,12 +44,7 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
                         id: $scope.user.id
                     }
 
-                    form.inputConfirmPass.$invalid = false;
-                    form.inputConfirmPass.$touched = false;
-                    form.inputNewPass.$invalid = false;
-                    form.inputNewPass.$touched = false;
-                    form.inputPass.$invalid = false;
-                    form.inputPass.$touched = false;
+                    form.$setUntouched();
 
 
                 } else if (data == '1') {
@@ -99,6 +94,22 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
                 }
             });
     }
+
+
+
+    $scope.station = {locationName: "", latitud: "", longitud: "", idService: "", idUser: $scope.user.id};
+
+    $scope.getLocation = function() {
+        locationServive.getLocation()
+            .then(function (data){
+            $scope.getloc = true;
+            $scope.station.latitud = data.lat;
+            $scope.station.longitud = data.lon;
+        })
+    }
+
+
+
 
 
 

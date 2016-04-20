@@ -5,7 +5,7 @@
             <div class="portlet-title">
                 <div class="caption caption-md">
                     <i class="icon-bar-chart theme-font hide"></i>
-                    <span class="caption-subject font-blue-madison bold uppercase">Mis observatorios</span>
+                    <span class="caption-subject font-blue-madison bold uppercase">Mis estaciones</span>
                 </div>
             </div>
 
@@ -17,7 +17,7 @@
                                 <div id="sparkline_bar"></div>
                             </div>
                             <div class="stat-number">
-                                <div class="title"> Observatorios </div>
+                                <div class="title"> Estaciones </div>
                                 <div class="number"> 2 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                 <div class="portlet box green-haze">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-sun-o"></i> Observatorios
+                            <i class="fa fa-sun-o"></i> Estaciones
                         </div>
                         <div class="tools">
                             <buttom class="btn green-haze btn-sm"  data-toggle="modal" data-target="#ModalObservatory"> Agregar
@@ -53,7 +53,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_3_1"> Observatorio Quesada </a>
+                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_3_1"> Estación Quesada </a>
                                     </h4>
                                 </div>
                                 <div id="collapse_3_1" class="panel-collapse collapse">
@@ -79,7 +79,7 @@
                                                                     <div class="portlet-title">
                                                                         <div class="caption">
                                                                             <i class="fa fa-sun-o font-green"></i>
-                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Climatica del observatorio</span>
+                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Climatica de la estación</span>
                                                                         </div>
                                                                         <div class="actions">
 
@@ -152,7 +152,7 @@
                                                                     <div class="portlet-title">
                                                                         <div class="caption">
                                                                             <i class="fa fa-sun-o font-green"></i>
-                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Astronomica del observatorio</span>
+                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Astronomica de la estación</span>
                                                                         </div>
                                                                         <div class="actions">
 
@@ -223,7 +223,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_3_2"> Observatorio Fortuna </a>
+                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_3_2"> Estación Fortuna </a>
                                     </h4>
                                 </div>
                                 <div id="collapse_3_2" class="panel-collapse collapse">
@@ -249,7 +249,7 @@
                                                                     <div class="portlet-title">
                                                                         <div class="caption">
                                                                             <i class="fa fa-sun-o font-green"></i>
-                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Climatica del observatorio</span>
+                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Climatica de la estación</span>
                                                                         </div>
                                                                         <div class="actions">
 
@@ -322,7 +322,7 @@
                                                                     <div class="portlet-title">
                                                                         <div class="caption">
                                                                             <i class="fa fa-sun-o font-green"></i>
-                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Astronomica del observatorio</span>
+                                                                            <span class="caption-subject font-green sbold uppercase">Informacion Astronomica de la estación</span>
                                                                         </div>
                                                                         <div class="actions">
 
@@ -405,45 +405,65 @@
                 <div class="portlet-title">
                     <div class="caption font-green">
                         <i class="fa fa-sun-o font-green"></i>
-                        <span class="caption-subject bold uppercase"> Agregar Observatorio</span>
+                        <span class="caption-subject bold uppercase"> Agregar estación</span>
                     </div>
-
                 </div>
                 <div class="portlet-body form">
-                    <form role="form">
+                    <form name="formStation" role="form">
                         <div class="form-body">
-                            <div class="form-group form-md-line-input form-md-floating-label">
-                                <input type="text" class="form-control  input-sm" id="form_control_1">
-                                <label for="form_control_1">Nombre Del Observatorio</label>
-                                <span class="help-block">Referencia que se hara al Observatorio</span>
-                            </div>
-                            <div class="form-group form-md-line-input form-md-floating-label has-success">
-                                <input type="text" class="form-control  input-sm" id="form_control_1">
-                                <label for="form_control_1">Latitud</label>
-                                <span class="help-block">Puede ser cambiado despues</span>
-                            </div>
-                            <div class="form-group form-md-line-input form-md-floating-label has-warning">
-                                <input type="text" class="form-control  input-sm" id="form_control_1">
-                                <label for="form_control_1">Longitud</label>
-                                <span class="help-block">Puede ser cambiado despues</span>
+
+                            <div class="form-group form-md-line-input form-md-floating-label" ng-class="formStation.inputStationName.$invalid && formStation.inputStationName.$touched ? 'has-error' : 'has-sucess'">
+                                <input type="text" class="form-control  input-sm" id="inputStationName" name="inputStationName" ng-model="station.locationName" ng-required="true">
+                                <label for="inputStationName">Nombre de la estación</label>
+                                <span class="help-block">Referencia que se hará a la estación</span>
+                                <span class="help-block help-block-error" ng-show="formStation.inputStationName.$invalid && formStation.inputStationName.$touched">Este campo es requerido.</span>
+                                <div class="form-control-focus"> </div>
                             </div>
 
-                            <div class="form-group form-md-line-input form-md-floating-label has-error">
+                            <div class="form-group form-md-line-input" ng-class="formStation.inputLat.$invalid && formStation.inputLat.$touched ? 'has-error' : 'has-sucess'">
+                                <div class="input-group" style="width: 110%;">
+                                    <div class="input-group-control">
+                                        <input ng-model="station.latitud" type="number" class="form-control" id="inputLat" name="inputLat" ng-disabled="getloc" ng-required="true">
+                                        <label for="inputLat">Latitud</label>
+                                        <span class="help-block help-block-error" ng-show="formStation.inputLat.$invalid && formStation.inputLat.$touched">Este campo es requerido.</span>
+                                    </div>
+                                    <buttom class="btn btn-circle btn-icon-only green" ng-click="getLocation()"  ng-disabled="getloc">
+                                        <i class="fa fa-map-marker"></i>
+                                    </buttom>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input" ng-class="formStation.inputLon.$invalid && formStation.inputLon.$touched ? 'has-error' : 'has-sucess'">
+                                <div class="input-group" style="width: 110%;">
+                                    <div class="input-group-control">
+                                        <input ng-model="station.longitud" type="number" class="form-control" id="inputLon" name="inputLon" ng-disabled="getloc" ng-required="true">
+                                        <label for="inputLon">Longitud</label>
+                                        <span class="help-block help-block-error" ng-show="formStation.inputLon.$invalid && formStation.inputLon.$touched">Este campo es requerido.</span>
+                                    </div>
+                                    <buttom class="btn btn-circle btn-icon-only green" ng-click="getLocation()"  ng-disabled="getloc">
+                                        <i class="fa fa-map-marker"></i>
+                                    </buttom>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <select class="form-control" name="delivery">
-                                    <option value=""></option>
-                                    <option value="1">Servicio 1</option>
-                                    <option value="2">Servicio 2</option>
-                                    <option value="3">Servicio 3</option>
+                                    <option value="0">Ninguno</option>
+                                    <option value="1">Apixu</option>
+                                    <option value="3">Forecast</option>
+                                    <option value="2">Wonderground</option>
                                 </select>
                                 <label for="form_control_1">Servicio</label>
                                 <span class="help-block">Servicios climaticos a consumir</span>
                             </div>
 
 
+
+
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn dark btn-outline" data-dismiss="modal"><span class="md-click-circle md-click-animate" style="height: 65px; width: 65px; top: -18.5px; left: 1.76563px;"></span>Close</button>
-                            <button type="button" class="btn green">Save changes</button>
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal"><span class="md-click-circle md-click-animate" style="height: 65px; width: 65px; top: -18.5px; left: 1.76563px;"></span>Cerrar</button>
+                            <button type="button" class="btn green" ng-disabled="formStation.$invalid">Guardar</button>
                         </div>
                     </form>
 

@@ -12,34 +12,40 @@
                 </div>
 
                 <p> Ingrese su información personal a continuación: </p>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Nombre Completo</label>
-                    <div class="input-icon">
-                        <i class="fa fa-font"></i>
-                        <input class="form-control placeholder-no-fix" type="text" placeholder="Nombre Completo" id="inputName" name="inputName" ng-model="user.name" ng-required="true" autofocus>
-                        <span class="help-inline text-danger" ng-show="formRegister.inputName.$invalid && formRegister.inputName.$touched">El campo nombre es requerido.</span>
+
+                <div class="form-group form-md-line-input"  ng-class="formRegister.inputName.$invalid && formRegister.inputName.$touched ? 'has-error' : 'has-sucess'">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-font"></i>
+                        </span>
+                        <input class="form-control placeholder-no-fix" type="text" placeholder="Nombre Completo" id="inputName" name="inputName" ng-model="user.name" ng-required="true" autocomplete="off">
+                        <span class="help-block help-block-error" ng-show="formRegister.inputName.$invalid && formRegister.inputName.$touched">Este campo es requerido.</span>
+                        <div class="form-control-focus"> </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <div class="input-icon">
-                        <i class="fa fa-envelope"></i>
-                        <input class="form-control placeholder-no-fix" type="email" id="inputEmail" name="inputEmail" placeholder="Email" ng-model="user.email" ng-required="true">
-<span class="help-inline text-danger" ng-show="formRegister.inputEmail.$invalid && formRegister.inputEmail.$touched">Debes ingresar un email valido.</span>
-<span ng-show="incorrectEmail" class="help-inline text-danger">Lo sentimos el email ya esta registrado.</span>
+                <div class="form-group form-md-line-input"  ng-class="formRegister.inputEmail.$invalid && formRegister.inputEmail.$touched ? 'has-error' : incorrectEmail ? 'has-error' : 'has-sucess'">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        <input class="form-control placeholder-no-fix" type="email" id="inputEmail" name="inputEmail" placeholder="Email" ng-model="user.email" ng-required="true" autocomplete="off">
+                        <span class="help-block help-block-error" ng-show="formRegister.inputEmail.$invalid && formRegister.inputEmail.$touched">Este campo es requerido.</span>
+                        <span ng-show="incorrectEmail" class="help-block help-block-error">Lo sentimos el email ya esta registrado.</span>
+                        <div class="form-control-focus"> </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
-                    <div class="input-icon">
-                        <i class="fa fa-lock"></i>
+                <div class="form-group form-md-line-input"  ng-class="formRegister.inputPass.$invalid && formRegister.inputPass.$touched ? 'has-error' : 'has-sucess'">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
                         <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="inputPass" name="inputPass" placeholder="Contraseña" ng-model="user.pass" ng-required="true">
-                        <span class="help-inline text-danger" ng-show="formRegister.inputPass.$invalid && formRegister.inputPass.$touched">El campo contraseña es requerido.</span>
+                        <span class="help-block help-block-error" ng-show="formRegister.inputPass.$invalid && formRegister.inputPass.$touched">Este campo es requerido.</span>
+                        <div class="form-control-focus"> </div>
                     </div>
                 </div>
-
 
                 <div class="form-actions">
                     <button type="button" class="btn grey-salsa btn-outline" onclick="window.location.href='#/login'"> Regresar </button>

@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-
         
+        /*
         DB::table('people')->delete();
 
         $persons = array(
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder {
         }
         
         
-        
+        */
         DB::table('stations')->delete();
 
         $stations = array(

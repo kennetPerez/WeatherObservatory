@@ -19,18 +19,21 @@ angular.module('WeatherApp').controller('RegisterController', function ($rootSco
         $scope.incorrectEmail = false;
         RegisterService.register($scope.user)
             .then(function (data) {
-                if (data !== undefined) {
-                    Auth.login(data);
-                } else {
-                    $scope.incorrectRegister = true;
-                    $timeout(function () {
-                        $scope.incorrectRegister = false;
-                    }, 3000);
-                }
-            })
+            if (data !== undefined) {
+                Auth.login(data);
+            } else {
+                $scope.incorrectRegister = true;
+                $timeout(function () {
+                    $scope.incorrectRegister = false;
+                }, 3000);
+            }
+        })
             .catch(function (err) {
-                $scope.incorrectEmail = true;
-            });
+            $scope.incorrectEmail = true;
+            $timeout(function () {
+                $scope.incorrectEmail = false;
+            }, 4000);
+        });
     }
 
 

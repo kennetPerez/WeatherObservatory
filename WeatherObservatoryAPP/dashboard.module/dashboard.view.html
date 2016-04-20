@@ -15,7 +15,7 @@
 <div>
 
     <ng-map class="map col-md-offset-1 col-md-10  col-sm-12" zoom-to-include-markers='auto' zoom="3">
-        <marker id='{{station.id}}' position="[{{station.lat}},{{station.lon}}]" ng-repeat="station in stations" on-click="showDetail(station)" animation="DROP">
+        <marker ng-repeat="station in stations" id='{{station.id}}' ng-attr-position="[{{station.lat}},{{station.lon}}]" on-click="showDetail(station)" animation="DROP">
         </marker>
 
         <info-window id="foo-iw">

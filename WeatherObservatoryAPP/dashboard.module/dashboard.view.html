@@ -18,25 +18,39 @@
         <marker ng-repeat="station in stations" id='{{station.id}}' ng-attr-position="[{{station.lat}},{{station.lon}}]" on-click="showDetail(station)" animation="DROP">
         </marker>
 
-        <info-window id="foo-iw">
+        <info-window id="foo-iw" style="cursor: default; position: absolute; width: 306px; height: 273px; left: 536px; top: -148px; z-index: -148;">
             <div ng-non-bindable="">
 
-                <div class="portlet light">
+                <div class="portlet light" style="margin-bottom: 0px;padding: 0px; width:245px;">
                     <div class="portlet-title tabbable-line">
                         <div class="caption caption-md">
                             <i class="fa fa-sun-o font-blue-madison"></i>
                             <span class="caption-subject font-blue-madison bold uppercase">{{station.locationName}}</span>
-                            <span class="caption-helper">{{station.idService}}</span>
+                            <span class="caption-helper">{{station.idService | filterNameService}}</span>
+                            <br>
+                            <span class="caption-helper font-blue-dark">2016-04-20 0:14</span>
                         </div>
                     </div>
-
-                    <li><img class="png-icon " src="./dashboard.module/images/temperatura.png" style="width: 24px; height: 24px;"> Temperatura 30°</li>
-                    <li><img class="png-icon" src="./dashboard.module/images/lluvia.png" style="width: 24px; height: 24px;"> Precipitacion 50</li>
-                    <li><img class="png-icon" src="./dashboard.module/images/viento.png" style="width: 24px; height: 24px;"> Viento 40km/h</li>
-                    <li><img class="png-icon" src="./dashboard.module/images/humedad.png" style="width: 24px; height: 24px;"> Humedad 40</li>
-
-
-
+                    <div class="portlet-body col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="text-center" style="font-size: 4em;">28°</div>
+                            <br>
+                            <div>Feelslike: 26°</div>
+                            <div>Viento: 28, ESE</div>
+                            <div>Lluvia: 0.0</div>
+                            <div>Humedad: 56</div>
+                            <div>Presión: 1025.0</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="text-center"><img class="png-icon " src="//cdn.apixu.com/weather/64x64/night/113.png" style="text-align: center; width: 55px; height: 55px;"></div>
+                            <div class="text-center">Despejado</div>
+                            <br>
+                            <div class="text-left">Sunrise: 05:00</div>
+                            <div class="text-left">Sunset: 05:00</div>
+                            <div class="text-left">Moonrise: 05:00</div>
+                            <div class="text-left">Moonset: 05:00</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

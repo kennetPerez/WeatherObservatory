@@ -107,10 +107,17 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
             })
     }
 
-    UserProfileService.myStations($scope.user.id, $scope.user.type)
+    UserProfileService.stations($scope.user.id, $scope.user.type)
         .then(function (data) {
-            console.log(data);
             $scope.myStations = data;
+
+            $scope.registerNumber = 0;
+
+            $scope.myStations.forEach(function(station){
+                $scope.registerNumber += (station.climate.length + station.astro.length)
+            });
+
+
         });
 
     // set sidebar closed and body solid layout mode

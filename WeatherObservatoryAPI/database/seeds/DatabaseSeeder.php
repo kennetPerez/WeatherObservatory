@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Service;
 use App\Person;
 use App\Station;
+use App\Climate;
+use App\Astronomic;
 
 class DatabaseSeeder extends Seeder {
 
@@ -18,7 +20,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
         
-        /*
+
         DB::table('people')->delete();
 
         $persons = array(
@@ -42,9 +44,8 @@ class DatabaseSeeder extends Seeder {
         foreach($services as $service){
             Service::create($service);
         }
-        
-        
-        */
+
+
         DB::table('stations')->delete();
 
         $stations = array(
@@ -58,7 +59,37 @@ class DatabaseSeeder extends Seeder {
         }
         
 
-        $this->command->info('Persons/Services/Stations tables seededs!');
+        DB::table('climates')->delete();
+
+        $climates = array(
+            ['idStation' => 1, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0'],
+
+            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0'],
+
+            ['idStation' => 3, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0']
+        );
+
+        foreach($climates as $climate){
+            Climate::create($climate);
+        }
+
+        DB::table('astronomics')->delete();
+
+        $astronomics = array(
+            ['idStation' => 1, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00'],
+            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00'],
+            ['idStation' => 3, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00']
+        );
+
+        foreach($astronomics as $astronomic){
+            Astronomic::create($astronomic);
+        }
+
+
+
+
+
+        $this->command->info('Persons/Services/Stations/Climate/Astronomic tables seededs!');
 	}
 
 }

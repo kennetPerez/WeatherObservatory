@@ -16,9 +16,7 @@ class CreateAstronomicsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('idStation')->unsigned();
-            $table->string('day');
-            $table->string('mount');
-            $table->string('year');
+            $table->string('date');
             $table->string('sunrise');
             $table->string('sunset');
             $table->string('moonrise');

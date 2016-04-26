@@ -16,10 +16,7 @@ class CreateClimatesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('idStation')->unsigned();
-            $table->string('day');
-            $table->string('mount');
-            $table->string('year');
-            $table->string('hour');
+            $table->string('date');
             $table->string('weatherText');
             $table->string('iconURL');
             $table->string('windKmH');

@@ -114,8 +114,15 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
 
     StationService.stations($scope.user.id, $scope.user.type)
         .then(function (data) {
-            console.log(data);
             $scope.myStations = data;
+
+            $scope.registerNumber = 0;
+
+            $scope.myStations.forEach(function(station){
+                $scope.registerNumber += (station.climate.length + station.astro.length)
+            });
+
+
         });
         
     $scope.createStation = function () {

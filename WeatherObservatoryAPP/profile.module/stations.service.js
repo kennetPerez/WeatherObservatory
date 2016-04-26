@@ -22,7 +22,6 @@ angular.module('WeatherApp').service("StationService", function ($http, $q, API_
     this.createStation = function (userId, idService , lat, lon, locationName) {
         var defered = $q.defer();
         var promise = defered.promise;
-        console.log(userId, idService , lat, lon, locationName);
         $http({
                 method: 'POST',
                 url: API_URL + "store",
@@ -41,5 +40,40 @@ angular.module('WeatherApp').service("StationService", function ($http, $q, API_
         return promise;
     }
     
+
+    this.delete = function (id){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'DELETE',
+                url: API_URL + "stations/" + id,
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            })
+            .error(function (err) {
+                defered.reject(err)
+            });
+
+        return promise;
+    }
+
+    this.update = function (station){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'POST',
+                url: API_URL + "stations/update",
+                data: station
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
 
 });

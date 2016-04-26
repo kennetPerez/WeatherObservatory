@@ -41,7 +41,7 @@
                             <i class="fa fa-sun-o"></i> Estaciones
                         </div>
                         <div class="tools">
-                            <buttom class="btn green-haze btn-sm" data-toggle="modal" data-target="#ModalObservatory"> Agregar
+                            <buttom class="btn green-haze btn-sm" data-toggle="modal" data-target="#ModalObservatory" ng-click="stationAdd()"> Agregar
                                 <i class="fa fa-plus"></i>
                             </buttom>
                         </div>
@@ -50,29 +50,32 @@
                     <div class="portlet-body">
                         <div class="panel-group accordion" id="accordion3">
 
-                            <div class="panel panel-default" ng-repeat="station in myStations">
+                            <div class="panel panel-default" ng-repeat="MyStation in myStations">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_{{station.station.id}}"> {{station.station.locationName}} </a>
+                                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" data-target="#collapse_{{MyStation.station.id}}"> {{MyStation.station.locationName}} </a>
                                     </h4>
                                 </div>
-                                <div id="collapse_{{station.station.id}}" class="panel-collapse collapse">
+                                <div id="collapse_{{MyStation.station.id}}" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <div class="portlet light" style="padding-top: 0px;">
                                             <div class="portlet-title tabbable-line" style="padding-top: 0px;">
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
-                                                        <a href="#" data-target="#tab_1_{{station.station.id}}" data-toggle="tab">Clima</a>
+                                                        <a href="#" data-target="#tab_1_{{MyStation.station.id}}" data-toggle="tab">Clima</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" data-target="#tab_2_{{station.station.id}}" data-toggle="tab">Astro</a>
+                                                        <a href="#" data-target="#tab_2_{{MyStation.station.id}}" data-toggle="tab">Astro</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" data-target="#tab_3_{{MyStation.station.id}}" data-ng-click="stationEdit(MyStation.station)" data-toggle="tab">Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="tab-content">
 
-                                                    <div class="tab-pane fade in active" id="tab_1_{{station.station.id}}">
+                                                    <div class="tab-pane fade in active" id="tab_1_{{MyStation.station.id}}">
                                                         <div class="row">
                                                             <div class="col-md-12 col-sm-12">
                                                                 <div class="portlet light portlet-fit portlet-datatable bordered" id="form_wizard_1">
@@ -104,7 +107,7 @@
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <tr class="odd" ng-repeat="climate in station.climate">
+                                                                                <tr class="odd" ng-repeat="climate in MyStation.climate">
                                                                                     <td> {{climate.date}} </td>
                                                                                     <td> {{climate.weatherText}} </td>
                                                                                     <td> {{climate.humidity}} </td>
@@ -130,7 +133,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="tab-pane fade" id="tab_2_{{station.station.id}}">
+                                                    <div class="tab-pane fade" id="tab_2_{{MyStation.station.id}}">
                                                         <div class="row">
                                                             <div class="col-md-12 col-sm-12">
                                                                 <div class="portlet light portlet-fit portlet-datatable bordered" id="form_wizard_1">
@@ -159,7 +162,7 @@
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <tr class="odd" ng-repeat="astro in station.astro">
+                                                                                <tr class="odd" ng-repeat="astro in MyStation.astro">
                                                                                     <td> {{astro.date}} </td>
                                                                                     <td> {{astro.moonrise}} </td>
                                                                                     <td> {{astro.moonset}} </td>
@@ -182,18 +185,57 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="tab-pane fade" id="tab_3_{{MyStation.station.id}}">
+                                                        <div class="portlet-title">
+                                                            <div class="caption font-green">
+                                                                <i class="fa fa-sun-o font-green"></i>
+                                                                <span class="caption-subject bold uppercase"> Editar estación</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="portlet-body form">
+                                                            <form name="formStation" role="form">
+                                                                <div class="form-body">
+
+                                                                    <div class="form-group form-md-line-input" ng-class="formStation.inputStationName.$invalid && formStation.inputStationName.$touched ? 'has-error' : 'has-sucess'">
+                                                                        <input ng-model="station.locationName" type="text" class="form-control  input-sm" id="inputStationName" name="inputStationName" ng-model="station.locationName" ng-required="true">
+                                                                        <label for="inputStationName">Nombre de la estación</label>
+                                                                        <span class="help-block help-block-error" ng-show="formStation.inputStationName.$invalid && formStation.inputStationName.$touched">Este campo es requerido.</span>
+                                                                        <div class="form-control-focus"> </div>
+                                                                    </div>
+
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <select ng-model="station.idService" class="form-control" name="delivery">
+                                                                            <option value="1">Apixu</option>
+                                                                            <option value="3">Forecast</option>
+                                                                            <option value="2">Wonderground</option>
+                                                                        </select>
+                                                                        <label for="form_control_1">Servicio</label>
+                                                                        <span class="help-block">Servicios climaticos a consumir</span>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" ng-click="deleteStation()">Eliminar estación</button>
+                                                                    <button ng-click="editStation()" type="button" class="btn green" ng-disabled="formStation.$invalid">Guardar</button>
+                                                                </div>
+                                                            </form>
+
+                                                        </div>
+
+
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -359,11 +401,10 @@
                                 <button type="button" class="btn dark btn-outline" data-dismiss="modal"><span class="md-click-circle md-click-animate" style="height: 65px; width: 65px; top: -18.5px; left: 1.76563px;"></span>Cancelar</button>
                                 <button type="button" class="btn green">Guardar</button>
                             </div>
-                    </form>
-                    </div>
+                            </form>
+                        </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -464,8 +505,6 @@
 
     </div>
 </div>
-
-
 
 <script class="ng-scope">
     ComponentsDateTimePickers.init(); // init todo page

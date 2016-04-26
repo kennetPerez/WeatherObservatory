@@ -18,6 +18,9 @@ Route::get('/api/v1/stations', 'Stations@index');
 Route::post('/api/v1/myStations', 'Stations@myStations');
 Route::post('/api/v1/store', 'Stations@store');
 
+Route::delete('/api/v1/stations/{id}', 'Stations@destroy');
+Route::post('/api/v1/stations/update', 'Stations@update');
+
 Route::post('/api/v1/people/login', 'People@login');
 Route::post('/api/v1/people/register', 'People@store');
 Route::post('/api/v1/people/change_pass', 'People@changePass');

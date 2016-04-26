@@ -31,39 +31,38 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         } else {
             UserProfileService.changePass($scope.pass)
                 .then(function (data) {
-                if (data == '0') {
-                    $scope.correctChange = true;
-                    $timeout(function () {
-                        $scope.correctChange = false;
-                    }, 3000);
+                    if (data == '0') {
+                        $scope.correctChange = true;
+                        $timeout(function () {
+                            $scope.correctChange = false;
+                        }, 3000);
 
-                    $scope.pass = {
-                        new: "",
-                        current: "",
-                        confirm: "",
-                        id: $scope.user.id
+                        $scope.pass = {
+                            new: "",
+                            current: "",
+                            confirm: "",
+                            id: $scope.user.id
+                        }
+
+                        form.$setUntouched();
+
+
+                    } else if (data == '1') {
+                        $scope.incorrectPass = true;
+                        $timeout(function () {
+                            $scope.incorrectPass = false;
+                        }, 3000);
                     }
-
-                    form.$setUntouched();
-
-
-                } else if (data == '1') {
-                    $scope.incorrectPass = true;
-                    $timeout(function () {
-                        $scope.incorrectPass = false;
-                    }, 3000);
-                }
-            })
+                })
                 .catch(function (err) {
-                console.log(err);
-            });
+                    console.log(err);
+                });
         }
     }
 
     $scope.deleteAccount = function () {
 
-        swal(
-            {
+        swal({
                 title: "¿Estas seguro?",
                 text: "Si eliminas tu cuenta, todos tus datos seran eliminados!",
                 type: "warning",
@@ -74,46 +73,48 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
                 closeOnConfirm: false,
                 closeOnCancel: false
             },
-            function(isConfirm)
-            {
-                if (isConfirm)
-                {
+            function (isConfirm) {
+                if (isConfirm) {
                     Auth.logout();
                     UserProfileService.deleteAccount($scope.user.id)
                         .then(function (data) {
-                        swal("Eliminada", "Su cuenta fue eliminada correctamente.", "success");
-                        $location.path("/login");
-                    })
+                            swal("Eliminada", "Su cuenta fue eliminada correctamente.", "success");
+                            $location.path("/login");
+                        })
                         .catch(function (err) {
-                        console.log(err);
-                    });
-                }
-                else
-                {
+                            console.log(err);
+                        });
+                } else {
                     swal("Cancelado", "Su cuenta no fue eliminada.", "error");
                 }
             });
     }
 
+    $scope.station = {
+        locationName: "",
+        latitud: "",
+        longitud: "",
+        idService: "",
+        idUser: $scope.user.id
+    };
 
-
-    $scope.station = {locationName: "", latitud: "", longitud: "", idService: "", idUser: $scope.user.id};
-
-    $scope.getLocation = function() {
+    $scope.getLocation = function () {
         locationServive.getLocation()
-            .then(function (data){
-            $scope.getloc = true;
-            $scope.station.latitud = data.lat;
-            $scope.station.longitud = data.lon;
-        })
+            .then(function (data) {
+                $scope.getloc = true;
+                $scope.station.latitud = data.lat;
+                $scope.station.longitud = data.lon;
+            })
     }
 
-
-
-
-
+    UserProfileService.myStations($scope.user.id, $scope.user.type)
+        .then(function (data) {
+            console.log(data);
+            $scope.myStations = data;
+        });
 
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
+
 });

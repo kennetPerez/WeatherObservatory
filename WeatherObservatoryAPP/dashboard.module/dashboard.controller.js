@@ -12,8 +12,8 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
 
     DashboardService.stations()
         .then(function (data) {
-        $scope.stations = data;
-    });
+            $scope.stations = data;
+        });
 
 
     $scope.showDetail = function (e, station) {
@@ -25,25 +25,18 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
         $scope.map.hideInfoWindow('foo-iw');
     };
 
-
-
-
-
 })
 
 
 .filter("filterNameService", function () {
-    var filter = function(idService) {
+    var filter = function (idService) {
         if (idService === 1) {
             return 'Apixu';
-        }
-        else if (idService === 2) {
+        } else if (idService === 2) {
             return 'Wunderground';
-        }
-        else if (idService === 3) {
+        } else if (idService === 3) {
             return 'Forecast';
-        }
-        else {
+        } else {
             return 'Ninguno';
         }
     }

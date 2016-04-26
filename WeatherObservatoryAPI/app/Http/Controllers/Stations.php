@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Station;
+use App\Climate;
+use App\Astronomic;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +18,33 @@ class Stations extends Controller {
 	public function index()
 	{
 		return Station::orderBy('id', 'asc')->get();
+	}
+
+    /**
+	 * Display a listing of my stations.
+	 *
+	 * @return Response
+	 */
+    public function myStations(Request $request)
+	{
+        if($request->input('type')==0) {
+            $myStations = Station::orderBy('id', 'asc')->get();  }
+
+        else{
+		  $myStations = Station::where('idPerson', '=', $request->input('idUser'))->orderBy('id', 'asc')->get();}
+
+        $output = [];
+        foreach($myStations as $station){
+            $idStation = $station->id;
+            $climate = Climate::where('idStation', '=', $idStation)->orderBy('id', 'asc')->get();
+            $astro = Astronomic::where('idStation', '=', $idStation)->orderBy('id', 'asc')->get();
+
+            $output[] = array('station'=>$station, 'climate'=>$climate, 'astro'=>$astro);
+        }
+
+
+
+        return json_encode($output);
 	}
 
 	/**

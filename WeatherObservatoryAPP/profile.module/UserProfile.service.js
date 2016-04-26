@@ -38,4 +38,23 @@ angular.module('WeatherApp').service("UserProfileService", function ($http, $q, 
         return promise;
     }
 
+    this.stations = function (userId, userType) {
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'POST',
+                url: API_URL + "myStations",
+                data: {
+                    user: userId,
+                    type: userType
+                }
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
 });

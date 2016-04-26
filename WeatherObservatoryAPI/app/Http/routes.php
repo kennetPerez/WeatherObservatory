@@ -16,6 +16,7 @@ Route::get('/api/v1/people', 'People@index');
 Route::get('/api/v1/services', 'Services@index');
 Route::get('/api/v1/stations', 'Stations@index');
 Route::post('/api/v1/myStations', 'Stations@myStations');
+Route::post('/api/v1/store', 'Stations@store');
 
 Route::post('/api/v1/people/login', 'People@login');
 Route::post('/api/v1/people/register', 'People@store');

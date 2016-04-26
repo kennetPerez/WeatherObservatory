@@ -62,9 +62,17 @@ class Stations extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$station = new Station;
+        $station->idPerson = $request->input('idPersona');
+        $station->idService = $request->input('idService');
+        $station->lat = $request->input('lat');
+        $station->lon = $request->input('lon');
+        $station->locationName = $request->input('locationName');
+        $station->save();
+        
+        return json_encode(array('station'=>$station, 'climate'=>array(), 'astro'=>array()));
 	}
 
 	/**

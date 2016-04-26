@@ -37,7 +37,7 @@ angular.module('WeatherApp').service("UserProfileService", function ($http, $q, 
 
         return promise;
     }
-
+/*
     this.stations = function (userId, userType) {
         var defered = $q.defer();
         var promise = defered.promise;
@@ -55,6 +55,6 @@ angular.module('WeatherApp').service("UserProfileService", function ($http, $q, 
             });
 
         return promise;
-    }
+    }*/
 
 });

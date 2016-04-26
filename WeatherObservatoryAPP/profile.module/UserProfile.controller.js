@@ -1,9 +1,14 @@
-angular.module('WeatherApp').controller('UserProfileController', function ($rootScope, $scope, $cookies, $location, $timeout, Auth, UserProfileService, locationServive) {
+angular.module('WeatherApp').controller('UserProfileController', function ($rootScope, $scope, $cookies, $location, $timeout, Auth, UserProfileService, locationServive,StationService) {
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
         Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_profile')); // set profile link active in sidebar menu
     });
-
+    
+    //Stations variables create 
+    $scope.StationForCreate={name:'',lat:'',lon:'',service:''};
+    
+    
+    
     $scope.user = $cookies.getObject('userData');
 
     $scope.logout = function () {
@@ -16,7 +21,7 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         confirm: "",
         id: $scope.user.id
     }
-
+    
     $scope.correctChange = false;
     $scope.incorrectConfirm = false;
     $scope.incorrectPass = false;
@@ -107,12 +112,20 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
             })
     }
 
-    UserProfileService.myStations($scope.user.id, $scope.user.type)
+    StationService.stations($scope.user.id, $scope.user.type)
         .then(function (data) {
             console.log(data);
             $scope.myStations = data;
         });
-
+        
+    $scope.createStation = function () {
+        StationService.createStation($scope.station.idUser, $scope.station.idService ,$scope.station.latitud, $scope.station.longitud,  $scope.station.locationName).then(function (data) {
+            console.log('--------------');
+            console.log(data);
+            $scope.myStations.push(data);
+        });
+    } 
+    
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;

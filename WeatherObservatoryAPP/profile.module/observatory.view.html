@@ -227,7 +227,7 @@
                         <div class="form-body">
 
                             <div class="form-group form-md-line-input form-md-floating-label" ng-class="formStation.inputStationName.$invalid && formStation.inputStationName.$touched ? 'has-error' : 'has-sucess'">
-                                <input type="text" class="form-control  input-sm" id="inputStationName" name="inputStationName" ng-model="station.locationName" ng-required="true">
+                                <input ng-model="station.locationName" type="text" class="form-control  input-sm" id="inputStationName" name="inputStationName" ng-model="station.locationName" ng-required="true">
                                 <label for="inputStationName">Nombre de la estación</label>
                                 <span class="help-block">Referencia que se hará a la estación</span>
                                 <span class="help-block help-block-error" ng-show="formStation.inputStationName.$invalid && formStation.inputStationName.$touched">Este campo es requerido.</span>
@@ -261,7 +261,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <select class="form-control" name="delivery">
+                                <select ng-model="station.idService" class="form-control" name="delivery">
                                     <option value="0">Ninguno</option>
                                     <option value="1">Apixu</option>
                                     <option value="3">Forecast</option>
@@ -277,7 +277,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn dark btn-outline" data-dismiss="modal"><span class="md-click-circle md-click-animate" style="height: 65px; width: 65px; top: -18.5px; left: 1.76563px;"></span>Cerrar</button>
-                            <button type="button" class="btn green" ng-disabled="formStation.$invalid">Guardar</button>
+                            <button ng-click="createStation()" type="button" class="btn green" ng-disabled="formStation.$invalid">Guardar</button>
                         </div>
                     </form>
 

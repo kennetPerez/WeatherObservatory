@@ -201,6 +201,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                         'assets/global/plugins/sweetalert.min.js',
                         'profile.module/UserProfile.service.js',
                         'profile.module/location.service.js',
+                        'profile.module/stations.service.js',
                         'profile.module/UserProfile.controller.js'
                     ]
                 });

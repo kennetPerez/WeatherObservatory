@@ -99,7 +99,7 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         locationName: "",
         latitud: "",
         longitud: "",
-        idService: "",
+        idService: "0",
         idUser: $scope.user.id
     };
 

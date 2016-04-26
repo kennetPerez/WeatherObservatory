@@ -13,6 +13,7 @@ angular.module('WeatherApp').controller('DashboardController', function ($scope,
     DashboardService.stations()
         .then(function (data) {
             $scope.stations = data;
+        console.log(data)
         });
 
 

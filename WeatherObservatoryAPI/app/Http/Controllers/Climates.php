@@ -33,11 +33,22 @@ class Climates extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-	}
+    public function store(Request $request){
+            $climateInfo = new Climate;
+            $climateInfo->idStation = $request->input('idStation');
+            $climateInfo->date = $request->input('date');
+            $climateInfo->weatherText = $request->input('weatherText');
+            $climateInfo->windKmH = $request->input('windKmH');
+            $climateInfo->windDir = $request->input('windDir');
+            $climateInfo->iconURL = '';
+            $climateInfo->temp = $request->input('temp');
+            $climateInfo->humidity = $request->input('humidity');
+            $climateInfo->precipitation = $request->input('precipitation');
+            $climateInfo->pressure = $request->input('pressure');
+            $climateInfo->save();
 
+            return json_encode(array('clime'=>$climateInfo));;
+        }
 	/**
 	 * Display the specified resource.
 	 *

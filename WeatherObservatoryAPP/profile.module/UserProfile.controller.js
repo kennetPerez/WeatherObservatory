@@ -4,8 +4,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_profile')); // set profile link active in sidebar menu
     });
 
-
-
+    //Utilizado a la hora de insertar registros a una estacion
+    $scope.currentStationId;
     $scope.user = $cookies.getObject('userData');
 
     $scope.logout = function () {
@@ -99,6 +99,23 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         idService: "1",
         idUser: $scope.user.id
     };
+    $scope.astro = {        
+        date: "",
+        sunrise: "",
+        sunset: "",
+        moonrise: "",
+        moonset: ""
+    };
+    $scope.clime = {
+        date: "",
+        weatherText: "",
+        windKmH: "",
+        windDir: "",
+        temp: "",
+        humidity: "",
+        precipitation: "",
+        pressure: ""
+    };
 
     $scope.stationEdit = function (station) {
         station.idService = station.idService.toString();
@@ -186,10 +203,67 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         StationService.createStation($scope.station.idUser, $scope.station.idService ,$scope.station.latitud, $scope.station.longitud,  $scope.station.locationName).then(function (data) {
             console.log('--------------');
             console.log(data);
-            $scope.myStations.push(data);
+            $scope.myStations.push(data); 
+            $modalInstance.dismiss('cancel');
+        });
+    } 
+    
+    
+    $scope.insertInfoAstronomic = function () {
+        $scope.astro.idStation=$scope.currentStationId;
+        
+        /*Validaciones de la insercion den registro astronomico en una stacion */
+        
+        
+        StationService.addAstroInfo($scope.astro).then(function (data) {
+            for (station in $scope.myStations)
+            {
+                console.log($scope.myStations[station].station.id,data.astro.idStation);
+               if($scope.myStations[station].station.id===data.astro.idStation)
+               {
+                   $scope.myStations[station].astro.push(data.astro);
+               }
+            }
+                
+            $scope.astro.date= "";
+            $scope.astro.sunrise= "";
+            $scope.astro.sunset= "";
+            $scope.astro.moonrise= "";
+            $scope.astro.moonset= "";
         });
     } 
 
+    $scope.insertInfoClimate = function () {
+            $scope.clime.idStation=$scope.currentStationId;
+            
+            /*Validaciones de la insercion de registro climatico en una stacion */
+            
+            
+            StationService.addClimeInfo($scope.clime).then(function (data) {
+                for (station in $scope.myStations)
+                {
+                if($scope.myStations[station].station.id===data.clime.idStation)
+                {
+                    $scope.myStations[station].climate.push(data.clime);
+                }
+                }
+                    
+                $scope.clime.date= "";
+                $scope.clime.weatherText= "";
+                $scope.clime.windKmH= "";
+                $scope.clime.windDir= "";
+                $scope.clime.temp= "";
+                $scope.clime.humidity= "";
+                $scope.clime.precipitation= "";
+                $scope.clime.pressure= "";
+            });
+        } 
+
+
+
+    $scope.updateObservatoryID=function (stationiId){
+        $scope.currentStationId=stationiId; 
+    }
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;

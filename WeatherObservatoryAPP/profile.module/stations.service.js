@@ -24,7 +24,7 @@ angular.module('WeatherApp').service("StationService", function ($http, $q, API_
         var promise = defered.promise;
         $http({
                 method: 'POST',
-                url: API_URL + "store",
+                url: API_URL + "stations",
                 data: {
                     idPersona: userId,
                     idService: idService,
@@ -74,6 +74,40 @@ angular.module('WeatherApp').service("StationService", function ($http, $q, API_
 
         return promise;
     }
+    
+    this.addAstroInfo = function (astro){
+        var defered = $q.defer();
+        var promise = defered.promise;
 
+        $http({
+                method: 'POST',
+                url: API_URL + "astronomic",
+                data: astro
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+    
+    this.addClimeInfo = function (clime){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'POST',
+                url: API_URL + "climate",
+                data: clime
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+    
+    
+    
 
 });

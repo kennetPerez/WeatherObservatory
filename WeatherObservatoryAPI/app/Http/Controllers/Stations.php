@@ -41,9 +41,6 @@ class Stations extends Controller {
 
             $output[] = array('station'=>$station, 'climate'=>$climate, 'astro'=>$astro);
         }
-
-
-
         return json_encode($output);
     }
 

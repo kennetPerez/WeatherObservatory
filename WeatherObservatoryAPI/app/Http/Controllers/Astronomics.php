@@ -33,11 +33,19 @@ class Astronomics extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-	}
+	public function store(Request $request)
+    {
+        $astronomicInfo = new Astronomic;
+        $astronomicInfo->idStation = $request->input('idStation');
+        $astronomicInfo->date = $request->input('date');
+        $astronomicInfo->sunrise = $request->input('sunrise');
+        $astronomicInfo->sunset = $request->input('sunset');
+        $astronomicInfo->moonrise = $request->input('moonrise');
+        $astronomicInfo->moonset = $request->input('moonset');
+        $astronomicInfo->save();
 
+        return json_encode(array('astro'=>$astronomicInfo));;
+    }
 	/**
 	 * Display the specified resource.
 	 *

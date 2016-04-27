@@ -148,6 +148,8 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     files: [
                         'assets/pages/scripts/dashboard.min.js',
                         'dashboard.module/dashboard.service.js',
+                        'dashboard.module/wonderground.service.js',
+                        'dashboard.module/apixu.service.js',
                         'dashboard.module/dashboard.controller.js',
                     ]
                 });

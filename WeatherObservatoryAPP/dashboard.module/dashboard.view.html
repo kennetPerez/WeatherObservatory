@@ -28,27 +28,27 @@
                             <span class="caption-subject font-blue-madison bold uppercase">{{station.locationName}}</span>
                             <span class="caption-helper">{{station.idService | filterNameService}}</span>
                             <br>
-                            <span class="caption-helper font-blue-dark">&nbsp;&nbsp;&nbsp;&nbsp; 2016-04-20 0:14</span>
+                            <span class="caption-helper font-blue-dark">&nbsp;&nbsp;&nbsp;&nbsp; {{condition.climate.date}}</span>
                         </div>
                     </div>
                     <div class="portlet-body col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div class="text-center" style="font-size: 4em;">28°</div>
+                            <div class="text-center" style="font-size: 4em;">{{condition.climate.temp}}°</div>
                             <br>
-                            <div>Feelslike: 26°</div>
-                            <div>Viento: 28, ESE</div>
-                            <div>Lluvia: 0.0</div>
-                            <div>Humedad: 56</div>
-                            <div>Presión: 1025.0</div>
+                            <div>Feelslike: {{condition.climate.feelslike}}°</div>
+                            <div>Viento: {{condition.climate.windKmH}}, {{condition.climate.windDir}}</div>
+                            <div>Lluvia: {{condition.climate.precipitation}}</div>
+                            <div>Humedad: {{condition.climate.humidity}}</div>
+                            <div>Presión: {{condition.climate.pressure}}</div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div class="text-center"><img class="png-icon " src="//cdn.apixu.com/weather/64x64/night/113.png" style="text-align: center; width: 55px; height: 55px;"></div>
-                            <div class="text-center">Despejado</div>
+                            <div class="text-center"><img class="png-icon " ng-attr-src="{{condition.climate.iconURL}}" style="text-align: center; width: 55px; height: 55px;"></div>
+                            <div class="text-center">{{condition.climate.weatherText}}</div>
                             <br>
-                            <div class="text-left">Sunrise: 05:00</div>
-                            <div class="text-left">Sunset: 05:00</div>
-                            <div class="text-left">Moonrise: 05:00</div>
-                            <div class="text-left">Moonset: 05:00</div>
+                            <div class="text-left">Sunrise: {{condition.astronomic.sunrise}}</div>
+                            <div class="text-left">Sunset: {{condition.astronomic.sunset}}</div>
+                            <div class="text-left">Moonrise: {{condition.astronomic.moonrise}}</div>
+                            <div class="text-left">Moonset: {{condition.astronomic.moonset}}</div>
                         </div>
                     </div>
                 </div>

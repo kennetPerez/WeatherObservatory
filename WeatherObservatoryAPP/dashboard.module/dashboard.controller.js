@@ -1,6 +1,6 @@
 angular.module('WeatherApp')
 
-    .controller('DashboardController', function ($scope, $http, NgMap, DashboardService, WondergroundService, ApixuService) {
+    .controller('DashboardController', function ($rootScope,$scope, $http, NgMap, DashboardService, WondergroundService, ApixuService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
@@ -39,6 +39,9 @@ angular.module('WeatherApp')
     $scope.hideDetail = function () {
         $scope.map.hideInfoWindow('foo-iw');
     };
+
+    $rootScope.settings.layout.pageBodySolid = true;
+    $rootScope.settings.layout.pageSidebarClosed = false;
 
 })
 

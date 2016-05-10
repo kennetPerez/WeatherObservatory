@@ -20,16 +20,21 @@ angular.module('WeatherApp')
     $scope.condition = {}
 
     $scope.showDetail = function (e, station) {
+
+        $scope.loadingData = true;
         $scope.station = station;
+        $scope.condition = {};
 
         if (station.id === 1) {
             ApixuService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
+                $scope.loadingData = false;
             });
         }
         else if (station.id === 2) {
             WondergroundService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
+                $scope.loadingData = false;
             });
         }
 

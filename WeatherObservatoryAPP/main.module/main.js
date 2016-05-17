@@ -150,6 +150,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                         'dashboard.module/dashboard.service.js',
                         'dashboard.module/wonderground.service.js',
                         'dashboard.module/apixu.service.js',
+                        'profile.module/stations.service.js',
                         'dashboard.module/dashboard.controller.js',
                     ]
                 });

@@ -77,9 +77,22 @@ class Climates extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		    $climateInfo = Climate::find($request->input('id'));
+
+            $climateInfo->date = $request->input('date');
+            $climateInfo->weatherText = $request->input('weatherText');
+            $climateInfo->windKmH = $request->input('windKmH');
+            $climateInfo->windDir = $request->input('windDir');
+            $climateInfo->iconURL = '';
+            $climateInfo->temp = $request->input('temp');
+            $climateInfo->humidity = $request->input('humidity');
+            $climateInfo->precipitation = $request->input('precipitation');
+            $climateInfo->pressure = $request->input('pressure');
+            $climateInfo->save();
+
+            return json_encode(array('clime'=>$climateInfo));
 	}
 
 	/**
@@ -90,7 +103,10 @@ class Climates extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$clime = Climate::find($id);
+
+        $clime->delete();
+        return json_encode(array('id'=>$id));
 	}
 
 }

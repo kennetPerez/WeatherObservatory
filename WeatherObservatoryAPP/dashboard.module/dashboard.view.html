@@ -21,7 +21,7 @@
         <info-window id="foo-iw" style="cursor: default; position: absolute; width: 306px; height: 273px; left: 536px; top: -148px; z-index: -148;">
             <div ng-non-bindable="">
 
-                <div class="portlet light" style="margin-bottom: 0px;padding: 0px; width:245px;">
+                <div ng-show="!loadingData" ng-cloak class="portlet light" style="margin-bottom: 0px;padding: 0px; width:245px;">
                     <div class="portlet-title tabbable-line">
                         <div class="caption caption-md">
                             <i class="fa fa-sun-o font-blue-madison"></i>
@@ -51,6 +51,10 @@
                             <div class="text-left">Moonset: {{condition.astronomic.moonset}}</div>
                         </div>
                     </div>
+                </div>
+
+                <div ng-show="loadingData" class="portlet light" style=" margin-bottom: 0px;padding: 0px;width:55px;height:55px;">
+                    <center><img src="./assets/global/img/spinner-blue.gif" align="middle" style=" width:45px;height:45px;"></center>
                 </div>
 
             </div>

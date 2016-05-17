@@ -1,5 +1,6 @@
 angular.module('WeatherApp')
 
+
     .controller('DashboardController', function ($scope, $http, NgMap, DashboardService,StationService, WondergroundService, ApixuService) {
 
     $scope.$on('$viewContentLoaded', function () {
@@ -20,18 +21,27 @@ angular.module('WeatherApp')
     $scope.condition = {}
 
     $scope.showDetail = function (e, station) {
+
+        $scope.loadingData = true;
         $scope.station = station;
+        $scope.condition = {};
 
         if (station.id === 1) {
             ApixuService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
                 //StationService.addAstroInfo(data.astronomic);
+
+                $scope.loadingData = false;
+
             });
         }
         else if (station.id === 2) {
             WondergroundService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
+
                 //StationService.addClimeInfo(data.climate)
+
+                $scope.loadingData = false;
             });
         }
 
@@ -41,6 +51,9 @@ angular.module('WeatherApp')
     $scope.hideDetail = function () {
         $scope.map.hideInfoWindow('foo-iw');
     };
+
+    $rootScope.settings.layout.pageBodySolid = true;
+    $rootScope.settings.layout.pageSidebarClosed = false;
 
 })
 

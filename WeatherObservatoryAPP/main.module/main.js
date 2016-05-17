@@ -4,7 +4,8 @@ var WeatherApp = angular.module("WeatherApp", [
     "oc.lazyLoad",
     "ngSanitize",
     "ngMap",
-    "ngCookies"
+    "ngCookies",
+    "amChartsDirective"
 ])
 
 .constant('API_URL', 'http://localhost:8000/WeatherObservatory/WeatherObservatoryAPI/public/index.php/api/v1/');
@@ -323,6 +324,7 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     name: 'WeatherApp',
                     insertBefore: '#ng_load_plugins_before',
                     files: [
+                        'climograms.module/climograms.service.js',
                         'climograms.module/climograms.controller.js'
                     ]
                 }]);

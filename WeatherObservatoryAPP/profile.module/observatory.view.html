@@ -117,10 +117,10 @@
                                                                                     <td> {{climate.windKmH}} </td>
                                                                                     <td> {{climate.windDir}} </td>
                                                                                     <td>
-                                                                                        <buttom data-toggle="modal" data-target="#" class="btn yellow-gold btn-sm">
+                                                                                        <buttom data-toggle="modal"  ng-click="editClimeRegister(climate)" data-target="#ModalClimatic" class="btn yellow-gold btn-sm">
                                                                                             <i class="fa fa-edit"></i>
                                                                                         </buttom>
-                                                                                        <buttom data-toggle="modal" data-target="#" class="btn red-mint btn-sm">
+                                                                                        <buttom ng-click="deleteClimeRegister(climate.id)" class="btn red-mint btn-sm">
                                                                                             <i class="fa fa-close"></i>
                                                                                         </buttom>
                                                                                     </td>
@@ -169,10 +169,10 @@
                                                                                     <td> {{astro.sunrise}} </td>
                                                                                     <td> {{astro.sunset}} </td>
                                                                                     <td>
-                                                                                        <buttom data-toggle="modal" data-target="#" class="btn yellow-gold btn-sm">
+                                                                                        <buttom data-toggle="modal" ng-click="editAstroRegister(astro)" data-target="#ModalAstronomic" class="btn yellow-gold btn-sm">
                                                                                             <i class="fa fa-edit"></i>
                                                                                         </buttom>
-                                                                                        <buttom data-toggle="modal" data-target="#" class="btn red-mint btn-sm">
+                                                                                        <buttom ng-click="deleteAstroRegister(astro.id)"  class="btn red-mint btn-sm">
                                                                                             <i class="fa fa-close"></i>
                                                                                         </buttom>
                                                                                     </td>
@@ -437,8 +437,8 @@
                                     <div class="form-group form-md-line-input has-warning">
                                         <div class="input-icon">
                                             <input ng-model="clime.weatherText" type="text" class="form-control" placeholder="Ej. Soleado">
-                                            <label for="form_control_1">Estado</label>
-                                            <span class="help-block">Estado del tiempo</span>
+                                            <label for="form_control_1">Condicion</label>
+                                            <span class="help-block">Condicion del tiempo</span>
                                             <i class="fa fa-cloud"></i>
                                         </div>
                                     </div>

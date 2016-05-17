@@ -44,7 +44,7 @@ class Astronomics extends Controller {
         $astronomicInfo->moonset = $request->input('moonset');
         $astronomicInfo->save();
 
-        return json_encode(array('astro'=>$astronomicInfo));;
+        return json_encode(array('astro'=>$astronomicInfo));
     }
 	/**
 	 * Display the specified resource.
@@ -74,9 +74,18 @@ class Astronomics extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$astronomicInfo = Astronomic::find($request->input('id'));
+
+        $astronomicInfo->date = $request->input('date');
+        $astronomicInfo->sunrise = $request->input('sunrise');
+        $astronomicInfo->sunset = $request->input('sunset');
+        $astronomicInfo->moonrise = $request->input('moonrise');
+        $astronomicInfo->moonset = $request->input('moonset');
+        $astronomicInfo->save();
+
+        return json_encode(array('astro'=>$astronomicInfo));
 	}
 
 	/**
@@ -87,7 +96,10 @@ class Astronomics extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$astro = Astronomic::find($id);
+
+        $astro->delete();
+        return json_encode(array('id'=>$id));
 	}
 
 }

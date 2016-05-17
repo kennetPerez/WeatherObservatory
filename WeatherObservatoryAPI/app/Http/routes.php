@@ -27,4 +27,8 @@ Route::post('/api/v1/people/change_pass', 'People@changePass');
 Route::delete('/api/v1/people/{id}', 'People@destroy');
 
 Route::post('/api/v1/astronomic', 'Astronomics@store');
+Route::post('/api/v1/astronomic/update', 'Astronomics@update');
+Route::delete('/api/v1/astronomic/{id}', 'Astronomics@destroy');
 Route::post('/api/v1/climate', 'Climates@store');
+Route::post('/api/v1/climate/update', 'Climates@update');
+Route::delete('/api/v1/climate/{id}', 'Climates@destroy');

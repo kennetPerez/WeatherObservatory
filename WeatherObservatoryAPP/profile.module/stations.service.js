@@ -107,6 +107,85 @@ angular.module('WeatherApp').service("StationService", function ($http, $q, API_
         return promise;
     }
     
+    this.editAstronomicInfo = function (astro){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'POST',
+                url: API_URL + "astronomic/update",
+                data: astro
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
+
+    this.deleteAstronomicInfo = function (id){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'DELETE',
+                url: API_URL + "astronomic/" + id,
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
+
+    this.editClimateInfo = function (clime){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'POST',
+                url: API_URL + "climate/update",
+                data: clime
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
+
+    this.deleteClimateInfo = function (id){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'DELETE',
+                url: API_URL + "climate/" + id,
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
+
+    this.deleteAstronomicInfo = function (id){
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+                method: 'DELETE',
+                url: API_URL + "astronomic/" + id,
+            })
+            .success(function (response) {
+                defered.resolve(response);
+            });
+
+        return promise;
+    }
     
     
 

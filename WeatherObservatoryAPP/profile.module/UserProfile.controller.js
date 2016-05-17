@@ -4,6 +4,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_profile')); // set profile link active in sidebar menu
     });
 
+    $scope.editar=false;
+
     //Utilizado a la hora de insertar registros a una estacion
     $scope.currentStationId;
     $scope.user = $cookies.getObject('userData');
@@ -104,7 +106,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         sunrise: "",
         sunset: "",
         moonrise: "",
-        moonset: ""
+        moonset: "",
+        id:""
     };
     $scope.clime = {
         date: "",
@@ -114,7 +117,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         temp: "",
         humidity: "",
         precipitation: "",
-        pressure: ""
+        pressure: "",
+        id:""
     };
 
     $scope.stationEdit = function (station) {
@@ -210,58 +214,203 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
     
     
     $scope.insertInfoAstronomic = function () {
-        $scope.astro.idStation=$scope.currentStationId;
-        
-        /*Validaciones de la insercion den registro astronomico en una stacion */
         
         
-        StationService.addAstroInfo($scope.astro).then(function (data) {
-            for (station in $scope.myStations)
-            {
-                console.log($scope.myStations[station].station.id,data.astro.idStation);
-               if($scope.myStations[station].station.id===data.astro.idStation)
-               {
-                   $scope.myStations[station].astro.push(data.astro);
-               }
-            }
+        //agregar
+            if(!$scope.editar){
                 
-            $scope.astro.date= "";
-            $scope.astro.sunrise= "";
-            $scope.astro.sunset= "";
-            $scope.astro.moonrise= "";
-            $scope.astro.moonset= "";
-        });
+
+                $scope.astro.idStation=$scope.currentStationId;
+
+                /*Validaciones de la insercion den registro astronomico en una stacion */
+
+
+                StationService.addAstroInfo($scope.astro).then(function (data) {
+                    for (station in $scope.myStations)
+                    {
+                        console.log(data);
+                        if($scope.myStations[station].station.id===data.astro.idStation)
+                        {
+                            $scope.myStations[station].astro.push(data.astro);
+                        }
+                    }
+
+                    $scope.astro.date= "";
+                    $scope.astro.sunrise= "";
+                    $scope.astro.sunset= "";
+                    $scope.astro.moonrise= "";
+                    $scope.astro.moonset= "";
+                });
+            }
+            //editar
+            else {
+                $scope.editar=false;
+                StationService.editAstronomicInfo($scope.astro).then(function (data) {
+
+                        for (station in $scope.myStations)
+                            {
+
+                                for(index in $scope.myStations[station].astro)
+                                {
+                                    if($scope.myStations[station].astro[index].id===data.astro.id){
+                                        $scope.myStations[station].astro[index]=data.astro;
+                                    }
+                                }
+
+                            }
+
+                    $scope.astro.date= "";
+                    $scope.astro.sunrise= "";
+                    $scope.astro.sunset= "";
+                    $scope.astro.moonrise= "";
+                    $scope.astro.moonset= "";
+
+
+                });
+            }
     } 
 
     $scope.insertInfoClimate = function () {
-            $scope.clime.idStation=$scope.currentStationId;
-            
-            /*Validaciones de la insercion de registro climatico en una stacion */
-            
-            
-            StationService.addClimeInfo($scope.clime).then(function (data) {
-                for (station in $scope.myStations)
-                {
-                if($scope.myStations[station].station.id===data.clime.idStation)
-                {
-                    $scope.myStations[station].climate.push(data.clime);
-                }
-                }
-                    
-                $scope.clime.date= "";
-                $scope.clime.weatherText= "";
-                $scope.clime.windKmH= "";
-                $scope.clime.windDir= "";
-                $scope.clime.temp= "";
-                $scope.clime.humidity= "";
-                $scope.clime.precipitation= "";
-                $scope.clime.pressure= "";
-            });
-        } 
+            //agregar
+            if(!$scope.editar){
+                $scope.clime.idStation=$scope.currentStationId;
 
+                /*Validaciones de la insercion de registro climatico en una stacion */
+
+
+                StationService.addClimeInfo($scope.clime).then(function (data) {
+                    for (station in $scope.myStations)
+                    {
+                        if($scope.myStations[station].station.id===data.clime.idStation)
+                        {
+                            $scope.myStations[station].climate.push(data.clime);
+                        }
+                    }
+
+                    $scope.clime.date= "";
+                    $scope.clime.weatherText= "";
+                    $scope.clime.windKmH= "";
+                    $scope.clime.windDir= "";
+                    $scope.clime.temp= "";
+                    $scope.clime.humidity= "";
+                    $scope.clime.precipitation= "";
+                    $scope.clime.pressure= "";
+                });
+            }
+            //editar
+            else {
+                $scope.editar=false;
+                StationService.editClimateInfo($scope.clime).then(function (data) {
+
+                        for (station in $scope.myStations)
+                            {
+
+                                for(index in $scope.myStations[station].climate)
+                                {
+                                    if($scope.myStations[station].climate[index].id===data.clime.id){
+                                        $scope.myStations[station].climate[index]=data.clime;
+                                    }
+                                }
+
+                            }
+
+                    $scope.clime.date= "";
+                    $scope.clime.weatherText= "";
+                    $scope.clime.windKmH= "";
+                    $scope.clime.windDir= "";
+                    $scope.clime.temp= "";
+                    $scope.clime.humidity= "";
+                    $scope.clime.precipitation= "";
+                    $scope.clime.pressure= "";
+
+
+                });
+            }
+        }
+    $scope.editAstroRegister = function(astro)
+    {
+        $scope.editar=true;
+        $scope.astro.date= astro.date;
+        $scope.astro.sunrise= astro.sunrise;
+        $scope.astro.sunset= astro.sunset;
+        $scope.astro.moonrise= astro.moonrise;
+        $scope.astro.moonset= astro.moonset;
+        $scope.astro.id= astro.id;
+    }
+
+
+    $scope.deleteAstroRegister = function(id)
+    {
+        console.log(id);
+         StationService.deleteAstronomicInfo(id).then(function (data) {
+             console.log(data);
+             for (station in $scope.myStations)
+                {
+                    
+                    for(index in $scope.myStations[station].astro)
+                    {
+                        if($scope.myStations[station].astro[index].id===parseInt(data.id)){
+                            $scope.myStations[station].astro.splice(index, 1);
+                        }
+                    }
+
+                }
+         })
+    }
+
+
+    $scope.editClimeRegister = function(clime)
+    {
+        $scope.editar=true;
+        $scope.clime.date= clime.date;
+        $scope.clime.weatherText=clime.weatherText;
+        $scope.clime.windKmH=clime.windKmH;
+        $scope.clime.windDir=clime.windDir;
+        $scope.clime.temp=clime.temp;
+        $scope.clime.humidity=clime.humidity;
+        $scope.clime.precipitation=clime.precipitation;
+        $scope.clime.pressure= clime.pressure;
+
+        $scope.clime.id= clime.id;
+    }
+
+
+    $scope.deleteClimeRegister = function(id)
+    {
+         StationService.deleteClimateInfo(id).then(function (data) {
+             console.log(data);
+             for (station in $scope.myStations)
+                {
+
+                    for(index in $scope.myStations[station].climate)
+                    {
+                        if($scope.myStations[station].climate[index].id===parseInt(data.id)){
+                            $scope.myStations[station].climate.splice(index, 1);
+                        }
+                    }
+
+                }
+         })
+    }
 
 
     $scope.updateObservatoryID=function (stationiId){
+
+        $scope.astro.date= "";
+        $scope.astro.sunrise= "";
+        $scope.astro.sunset= "";
+        $scope.astro.moonrise= "";
+        $scope.astro.moonset= "";
+        $scope.clime.date= "";
+        $scope.clime.weatherText= "";
+        $scope.clime.windKmH= "";
+        $scope.clime.windDir= "";
+        $scope.clime.temp= "";
+        $scope.clime.humidity= "";
+        $scope.clime.precipitation= "";
+        $scope.clime.pressure= "";
+
+
         $scope.currentStationId=stationiId; 
     }
     // set sidebar closed and body solid layout mode

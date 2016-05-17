@@ -49,8 +49,7 @@ class DatabaseSeeder extends Seeder {
 
         $stations = array(
             ['idPerson' => 1, 'idService' => 1, 'lat' => '10.741173858409025', 'lon' => '-84.57046882656255', 'locationName' => 'Santa Rosa'],
-            ['idPerson' => 2, 'idService' => 2, 'lat' => '9.529931587524796', 'lon' => '-83.21915046718755', 'locationName' => 'Telire'],
-            ['idPerson' => 3, 'idService' => 3, 'lat' => '8.529931587524796', 'lon' => '-82.21915046718755', 'locationName' => 'No Se']
+            ['idPerson' => 2, 'idService' => 2, 'lat' => '9.529931587524796', 'lon' => '-83.21915046718755', 'locationName' => 'Telire']
         );
 
         foreach($stations as $station){
@@ -63,9 +62,7 @@ class DatabaseSeeder extends Seeder {
         $climates = array(
             ['idStation' => 1, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0'],
 
-            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0'],
-
-            ['idStation' => 3, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0']
+            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'weatherText' => 'Nublado', 'iconURL' => '', 'windKmH' => '28', 'windDir' => 'E', 'temp' => '28', 'humidity' => '56', 'precipitation' => '0.0', 'pressure' => '1025.0']
         );
 
         foreach($climates as $climate){
@@ -76,8 +73,7 @@ class DatabaseSeeder extends Seeder {
 
         $astronomics = array(
             ['idStation' => 1, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00'],
-            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00'],
-            ['idStation' => 3, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00']
+            ['idStation' => 2, 'date' => '2016-04-26 09:25', 'sunrise' => '05:00', 'sunset' => '05:00', 'moonrise' => '05:00', 'moonset' => '05:00']
         );
 
         foreach($astronomics as $astronomic){

@@ -1,6 +1,7 @@
 angular.module('WeatherApp')
 
-.controller('DashboardController', function ($rootScope, $scope, $http, NgMap, DashboardService, WondergroundService, ApixuService) {
+
+.controller('DashboardController', function ($scope, $http, NgMap, DashboardService, StationService, WondergroundService, ApixuService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
@@ -28,11 +29,17 @@ angular.module('WeatherApp')
         if (station.idService === 1) {
             ApixuService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
+                //StationService.addAstroInfo(data.astronomic);
+
                 $scope.loadingData = false;
+
             });
         } else if (station.idService === 2) {
             WondergroundService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
+
+                //StationService.addClimeInfo(data.climate)
+
                 $scope.loadingData = false;
             });
         }

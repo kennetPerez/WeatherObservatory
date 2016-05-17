@@ -1,7 +1,7 @@
 angular.module('WeatherApp')
 
 
-.controller('DashboardController', function ($scope, $http, NgMap, DashboardService, StationService, WondergroundService, ApixuService) {
+.controller('DashboardController', function ($rootScope, $scope, $http, NgMap, DashboardService, StationService, WondergroundService, ApixuService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components

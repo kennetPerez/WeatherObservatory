@@ -1,7 +1,7 @@
 angular.module('WeatherApp')
 
 
-.controller('DashboardController', function ($rootScope, $scope, $http, NgMap, DashboardService, StationService, WondergroundService, ApixuService) {
+.controller('DashboardController', function ($filter,$rootScope, $scope, $http, NgMap, DashboardService, StationService, WondergroundService, ApixuService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax(); // initialize core components
@@ -29,15 +29,28 @@ angular.module('WeatherApp')
         if (station.idService === 1) {
             ApixuService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
-                //StationService.addAstroInfo(data.astronomic);
-
+                data.astronomic.idStation=station.id;
+                data.astronomic.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
+                StationService.addAstroInfo(data.astronomic);
+                data.climate.idStation=station.id;
+                data.climate.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
+                StationService.addClimeInfo(data.climate);
+                
+                
+                //station.id
+                //console.log($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
                 $scope.loadingData = false;
 
             });
         } else if (station.idService === 2) {
             WondergroundService.get(station.lat, station.lon).then(function (data) {
                 $scope.condition = data;
-
+                data.climate.idStation=station.id;
+                data.climate.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
+                StationService.addClimeInfo(data.climate);
+                data.astronomic.idStation=station.id;
+                data.astronomic.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
+                StationService.addAstroInfo(data.astronomic);
                 //StationService.addClimeInfo(data.climate)
 
                 $scope.loadingData = false;

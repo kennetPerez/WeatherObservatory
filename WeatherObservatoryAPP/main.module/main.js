@@ -229,6 +229,10 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
             pageTitle: 'User Account'
         }
     })
+    
+    
+    
+    
 
     // User Login
     .state("login", {
@@ -423,7 +427,6 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
         data: {
             pageTitle: 'Mapas'
         },
-        controller: "MapsController",
         resolve: {
             deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load({
@@ -431,13 +434,58 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
                     insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                     files: [
                         'assets/apps/css/todo-2.css',
-                        'assets/apps/scripts/todo-2.min.js',
-                        'maps.module/maps.controller.js'
+                        'assets/apps/scripts/todo-2.min.js'
                     ]
                 });
             }]
         }
     })
+    .state("maps.temp", {
+        url: "/temperature",
+        templateUrl: "maps.module/temp.map/temp.map.html",
+        controller: "MapsTempController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                    files: [
+                        'maps.module/temp.map/temp.map.js'
+                    ]
+                });
+            }]
+        }
+    })
+    .state("maps.rain", {
+        url: "/rain",
+        templateUrl: "maps.module/rain.map/rain.map.html",
+        controller: "MapsRainController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                    files: [
+                        'maps.module/rain.map/rain.map.js'
+                    ]
+                });
+            }]
+        }
+    })
+    .state("maps.cloud", {
+        url: "/cloud",
+        templateUrl: "maps.module/clouds.map/clouds.map.html",
+        controller: "MapsCloudController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                    files: [
+                        'maps.module/clouds.map/clouds.map.js'
+                    ]
+                });
+            }]
+        }
+    })
+
 
 }]);
 

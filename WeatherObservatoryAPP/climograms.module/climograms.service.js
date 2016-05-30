@@ -3,72 +3,31 @@ angular.module('WeatherApp').service("climogramsService", function ($http, $q, $
     this.dataFromPromise = function(){
         var deferred = $q.defer();
 
-        var dataProvider = [
+        $http({
+            method: 'GET',
+            url: API_URL + "climate/climograms"
+        })
+            .success(function (response) {
+                var data = [];
+                var año = new Date().getFullYear();
 
-            {
-                "month": "2015-01",
-                "precipitation": 28,
-                "temperature": 10.4
-            },
-            {
-                "month": "2015-02",
-                "precipitation": 29,
-                "temperature": 11.6
-            },
-            {
-                "month": "2015-03",
-                "precipitation": 34,
-                "temperature": 12.4
-            },
-            {
-                "month": "2015-04",
-                "precipitation": 30,
-                "temperature": 16.3
-            },
-            {
-                "month": "2015-05",
-                "precipitation": 39,
-                "temperature": 19.4
-            },
-            {
-                "month": "2015-06",
-                "precipitation": 23,
-                "temperature": 23
-            },
-            {
-                "month": "2015-07",
-                "precipitation": 9,
-                "temperature": 26.2
-            },
-            {
-                "month": "2015-08",
-                "precipitation": 21,
-                "temperature": 26.2
-            },
-            {
-                "month": "2015-09",
-                "precipitation": 57,
-                "temperature": 24.5
-            },
-            {
-                "month": "2015-10",
-                "precipitation": 99,
-                "temperature": 19.6
-            },
-            {
-                "month": "2015-11",
-                "precipitation": 39,
-                "temperature": 14.2
-            },
-            {
-                "month": "2015-12",
-                "precipitation": 43,
-                "temperature": 9.4
-            }
+                for (mes in response) {
+                    var date = año+"-"+mes
+                    var precipitation = 0;
+                    var temp = 0;
+                    response[mes].forEach(function (value) {
+                        precipitation += parseFloat(value.precipitation)
+                        temp += parseFloat(value.temp)
+                    })
 
-        ];
+                    temp = temp/response[mes].length
+                    precipitation = precipitation/response[mes].length
+                    data.push({"date": date,"temp":temp , "precipitation": precipitation})
+                }
 
-        deferred.resolve(dataProvider)
+                deferred.resolve(data);
+            });
+
         return deferred.promise;
     };
 

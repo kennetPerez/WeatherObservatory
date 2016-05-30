@@ -3,11 +3,11 @@ angular.module('WeatherApp').controller('climogramsController', ['$rootScope', '
         Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_informes'));
     });
 
-
-
     $scope.amChartOptions =
     {
-        data: climogramsService.dataFromPromise(),
+        data: climogramsService.dataFromPromise().then(function (data) {
+            return data;
+        }),
         type: "serial",
         theme: 'light',
         "language": "sp",
@@ -61,7 +61,7 @@ angular.module('WeatherApp').controller('climogramsController', ['$rootScope', '
                 "legendValueText": "[[value]] C°",
                 "title": "Temperatura",
                 "fillAlphas": 0,
-                "valueField": "temperature",
+                "valueField": "temp",
                 "valueAxis": "temperatureAxis"
             }
         ],
@@ -75,7 +75,7 @@ angular.module('WeatherApp').controller('climogramsController', ['$rootScope', '
             "zoomable": true,
         },
         "dataDateFormat": "YYYY-MM",
-        "categoryField": "month",
+        "categoryField": "date",
 
 
 
@@ -109,6 +109,7 @@ angular.module('WeatherApp').controller('climogramsController', ['$rootScope', '
             "gridCount": 50
         }
     }
+
 
 
     $rootScope.settings.layout.pageBodySolid = true;

@@ -35,10 +35,6 @@ angular.module('WeatherApp')
                 data.climate.idStation=station.id;
                 data.climate.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
                 StationService.addClimeInfo(data.climate);
-                
-                
-                //station.id
-                //console.log($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
                 $scope.loadingData = false;
 
             });
@@ -51,7 +47,6 @@ angular.module('WeatherApp')
                 data.astronomic.idStation=station.id;
                 data.astronomic.date=($filter('date')(new Date(), 'yyyy-MM-dd-hh-mm'));
                 StationService.addAstroInfo(data.astronomic);
-                //StationService.addClimeInfo(data.climate)
 
                 $scope.loadingData = false;
             });

@@ -32,3 +32,6 @@ Route::delete('/api/v1/astronomic/{id}', 'Astronomics@destroy');
 Route::post('/api/v1/climate', 'Climates@store');
 Route::post('/api/v1/climate/update', 'Climates@update');
 Route::delete('/api/v1/climate/{id}', 'Climates@destroy');
+
+Route::get('/api/v1/climate/climograms', 'Climates@climograms');
+

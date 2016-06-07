@@ -122,5 +122,25 @@ class Stations extends Controller {
         $station->delete();
         return 0;
     }
+    
+    
+    /**
+	 * Return the station variables
+	 *
+	 * @return Response
+	 */
+    public function stationVariables()
+    {
+        $stationVariables =  Station::orderBy('id', 'asc')->get();
+          
+        foreach($stationVariables as $station){
+            
+            $idStation = $station->id;
+            $climate = Climate::where('idStation', '=', $idStation)->orderBy('id', 'asc')->get();
+
+            $output[] = array('station'=>$station, 'climate'=>$climate);
+        }
+        return json_encode($output);
+    }
 
 }

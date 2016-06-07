@@ -337,20 +337,21 @@ WeatherApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
     })
 
     //graficos Generales
-    .state('generalGraph', {
-        url: "/generalGraph",
-        templateUrl: "generalGraph.module/generalGraph.view.html",
+    .state('variableDataTable', {
+        url: "/variableDataTable",
+        templateUrl: "variableDataTable.module/variableDataTable.view.html",
         data: {
             pageTitle: 'Graficos Generales'
         },
-        controller: "GeneralGraphController",
+        controller: "VariableDataTableController",
         resolve: {
             deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load([{
                     name: 'WeatherApp',
                     insertBefore: '#ng_load_plugins_before',
                     files: [
-                        'generalGraph.module/generalGraph.controller.js'
+                        'variableDataTable.module/variableDataTable.service.js',
+                        'variableDataTable.module/variableDataTable.controller.js'
                     ]
                 }]);
             }]

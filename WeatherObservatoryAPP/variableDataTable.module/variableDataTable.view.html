@@ -1,0 +1,50 @@
+<div class="portlet box green-haze">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-sun-o"></i> Estaciones
+        </div>
+    </div>
+
+    <div class="tab-pane fade in active">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet light portlet-fit portlet-datatable bordered" id="form_wizard_1">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-sun-o font-green"></i>
+                            <span class="caption-subject font-green sbold uppercase">Informacion Climatica</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body table-scrollable">
+                        <table class="table table-striped table-hover" id="sample_2">
+                            <thead>
+                            <tr>
+                                <th> Estación </th>
+                                <th> Condición </th>
+                                <th> Humedad </th>
+                                <th> Precipitación </th>
+                                <th> Presión </th>
+                                <th> Temperatura </th>
+                                <th> Viento/KmH </th>
+                                <th> Direccion del viento </th>
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="station in stations">
+                                <tr class="odd" ng-repeat="climates in station.climate">
+                                    <td> {{station.station.locationName}} </td>
+                                    <td> {{climates.weatherText}} </td>
+                                    <td> {{climates.humidity}} </td>
+                                    <td> {{climates.precipitation}} </td>
+                                    <td> {{climates.pressure}} </td>
+                                    <td> {{climates.temp}} </td>
+                                    <td> {{climates.windKmH}} </td>
+                                    <td> {{climates.windDir}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

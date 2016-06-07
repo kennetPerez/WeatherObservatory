@@ -101,6 +101,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         idService: "1",
         idUser: $scope.user.id
     };
+    
+    
     $scope.astro = {        
         date: "",
         sunrise: "",
@@ -109,6 +111,8 @@ angular.module('WeatherApp').controller('UserProfileController', function ($root
         moonset: "",
         id:""
     };
+    
+    
     $scope.clime = {
         date: "",
         weatherText: "",

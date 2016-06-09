@@ -20,25 +20,27 @@
                             <thead>
                             <tr>
                                 <th> Estación </th>
-                                <th> Condición </th>
+                                <!--<th> Condición </th>-->
                                 <th> Humedad </th>
                                 <th> Precipitación </th>
                                 <th> Presión </th>
                                 <th> Temperatura </th>
                                 <th> Viento/KmH </th>
-                                <th> Direccion del viento </th>
+                                <!--<th> Direccion del viento </th>-->
                             </tr>
                             </thead>
-                            <tbody ng-repeat="station in stations">
-                                <tr class="odd" ng-repeat="climates in station.climate">
-                                    <td> {{station.station.locationName}} </td>
-                                    <td> {{climates.weatherText}} </td>
+                            <!--<tbody ng-repeat="station in stations">-->
+                            <tbody>
+                            <!--<tr class="odd" ng-repeat="climates in station.climate">-->
+                                <tr class="odd" ng-repeat="climates in generalData">
+                                    <td> {{climates.station}} </td>
+                                    <!--<td> {{climates.weatherText}} </td>-->
                                     <td> {{climates.humidity}} </td>
                                     <td> {{climates.precipitation}} </td>
                                     <td> {{climates.pressure}} </td>
                                     <td> {{climates.temp}} </td>
                                     <td> {{climates.windKmH}} </td>
-                                    <td> {{climates.windDir}} </td>
+                                    <!--<td> {{climates.windDir}} </td>-->
                                 </tr>
                             </tbody>
                         </table>

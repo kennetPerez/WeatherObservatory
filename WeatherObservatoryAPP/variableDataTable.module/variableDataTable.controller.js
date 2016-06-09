@@ -13,13 +13,13 @@ angular.module('WeatherApp').controller('VariableDataTableController', ['$rootSc
 
     var cont = 0;
     //clean data object
-    var data;
+    var variableData;
     function setData() {
-        data = {
+        variableData = {
             station : "",
-            weatherText: "",
+            //weatherText: "",
             windKmH: 0,
-            windDir: "",
+            //windDir: "",
             temp: 0,
             humidity: 0,
             precipitation: 0,
@@ -31,7 +31,6 @@ angular.module('WeatherApp').controller('VariableDataTableController', ['$rootSc
     
     function averagedData(data){
         data.humidity= data.humidity / cont;
-        data.precipitation = data.precipitation / cont;
         data.pressure = data.pressure / cont;
         data.temp = data.temp / cont;
         data.windKmH = data.windKmH / cont;
@@ -39,27 +38,30 @@ angular.module('WeatherApp').controller('VariableDataTableController', ['$rootSc
         return data;
     }
 
+    
     VariableDataTableService.stations()
         .then(function (data) {
             $scope.stations = data;
-            console.log('fgjhgjh',$scope.stations)
+            //console.log('----->',$scope.stations)
             $scope.stations.forEach(function(station){
                 station.climate.forEach(function(climates){
-                    data.station = station.station.locationName;
-                    data.weatherText = climates.weatherText;
-                    data.humidity += climates.humidity;
-                    data.precipitation += climates.precipitation;
-                    data.pressure += climates.pressure;
-                    data.temp += climates.temp;
-                    data.windKmH += climates.windKmH;
+                    variableData.station = station.station.locationName;
+                    variableData.humidity += parseInt(climates.humidity);
+                    variableData.precipitation += parseInt(climates.precipitation);
+                    variableData.pressure += parseInt(climates.pressure);
+                    variableData.temp += parseInt(climates.temp);
+                    variableData.windKmH += parseInt(climates.windKmH);
                     cont++;
                 })
-                //dividir
                 //insert data object in array
-                $scope.generalData.push(averagedData(data));
+                $scope.generalData.push(averagedData(variableData));
                 //clean data object
                 setData();
                 cont=0;
             })
+            console.log("Arreglo nuevo",$scope.generalData);
         });
+
+
+
 }]);

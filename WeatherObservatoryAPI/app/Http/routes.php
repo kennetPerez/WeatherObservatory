@@ -17,6 +17,7 @@ Route::get('/api/v1/services', 'Services@index');
 Route::get('/api/v1/stations', 'Stations@index');
 Route::post('/api/v1/myStations', 'Stations@myStations');
 Route::post('/api/v1/stations', 'Stations@store');
+Route::get('/api/v1/stations/variables', 'Stations@stationVariables');
 
 Route::delete('/api/v1/stations/{id}', 'Stations@destroy');
 Route::post('/api/v1/stations/update', 'Stations@update');
@@ -30,8 +31,8 @@ Route::post('/api/v1/astronomic', 'Astronomics@store');
 Route::post('/api/v1/astronomic/update', 'Astronomics@update');
 Route::delete('/api/v1/astronomic/{id}', 'Astronomics@destroy');
 Route::post('/api/v1/climate', 'Climates@store');
+Route::get('/api/v1/storeClimate/{temp}/{humidity}', 'Climates@storeArduinoData');
 Route::post('/api/v1/climate/update', 'Climates@update');
 Route::delete('/api/v1/climate/{id}', 'Climates@destroy');
 
 Route::get('/api/v1/climate/climograms', 'Climates@climograms');
-

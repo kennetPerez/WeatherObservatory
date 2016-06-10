@@ -61,6 +61,28 @@ class Climates extends Controller {
 
         return json_encode(array('clime'=>$climateInfo));
     }
+    
+    /**
+	 * Store arduino data
+	 *
+	 * @return Response
+	 */
+    /*public function storeArduinoData($temp, $humidity){
+        $climateInfo = new Climate;
+        $climateInfo->idStation = '4';
+        $climateInfo->date = date('Y-m-d H:i:s');
+        $climateInfo->weatherText = 'N/A';
+        $climateInfo->windKmH = 'N/A';
+        $climateInfo->windDir = 'N/A';
+        $climateInfo->iconURL = '';
+        $climateInfo->temp = $temp;
+        $climateInfo->humidity = $humidity;
+        $climateInfo->precipitation = 'N/A';
+        $climateInfo->pressure = 'N/A';
+        $climateInfo->save();
+
+        return json_encode(array('clime'=>$climateInfo));
+    }*/
     /**
 	 * Display the specified resource.
 	 *

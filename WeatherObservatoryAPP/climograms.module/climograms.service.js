@@ -21,7 +21,6 @@ angular.module('WeatherApp').service("climogramsService", function ($http, $q, $
                     })
 
                     temp = temp/response[mes].length
-                    precipitation = precipitation/response[mes].length
                     data.push({"date": date,"temp":temp , "precipitation": precipitation})
                 }
 

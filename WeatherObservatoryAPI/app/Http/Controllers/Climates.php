@@ -33,7 +33,7 @@ class Climates extends Controller {
     public function climograms()
     {
         //return Climate::orderBy('idStation', 'asc')->select("date","temp", "precipitation")->get();
-        return Climate::orderBy('idStation', 'asc')->select("date", "temp", "precipitation")->get()
+        return Climate::orderBy('date', 'asc')->select("date", "temp", "precipitation")->get()
             ->groupBy(function($date) {
                 return Carbon::parse($date->date)->format('m');
             });

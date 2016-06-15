@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel {
 	{
 		$schedule->command('inspire')
 				 ->everyFiveMinutes();
+        $schedule->command('ClimeAstro:update')->everyFiveMinutes();
     }
 
 }
